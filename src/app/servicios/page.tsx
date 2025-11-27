@@ -95,59 +95,68 @@ export default function ServiciosPage() {
         </section>
 
         {/* Listado de productos y servicios */}
-        <section className="mt-16 grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="text-base font-semibold text-slate-900">
+        <section className="mt-16 border-t border-slate-100 pt-10 grid gap-8 md:grid-cols-2">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-brand-magenta">
               Productos impresos
             </h2>
-            <p className="mt-2 text-sm text-slate-700">
+            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
               Trabajamos una amplia variedad de piezas para cubrir las necesidades de tu
               negocio.
             </p>
             <ul className="mt-4 grid grid-cols-1 gap-1 text-sm text-slate-800 sm:grid-cols-2">
-              <li>Packaging (cajas, bandejas, etc.)</li>
-              <li>Bolsas de papel</li>
-              <li>Volantes</li>
-              <li>Afiches</li>
-              <li>Tarjetas personales</li>
-              <li>Adhesivos y etiquetas</li>
-              <li>Carpetas</li>
-              <li>Sobres</li>
-              <li>Libretas</li>
-              <li>Plastificado</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Packaging (cajas, bandejas, etc.)</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Bolsas de papel</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Volantes</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Afiches</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Tarjetas personales</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Adhesivos y etiquetas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Carpetas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Sobres</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Libretas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Plastificado</li>
             </ul>
-          </div>
+          </article>
 
-          <div>
-            <h2 className="text-base font-semibold text-slate-900">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-brand-magenta">
               Formularios y piezas especiales
             </h2>
-            <p className="mt-2 text-sm text-slate-700">
+            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
               También realizamos material administrativo y proyectos a medida para tu
               empresa o emprendimiento.
             </p>
             <ul className="mt-4 grid grid-cols-1 gap-1 text-sm text-slate-800 sm:grid-cols-2">
-              <li>Hojas de facturación electrónica</li>
-              <li>Blocks y anotadores</li>
-              <li>Formularios</li>
-              <li>Papel antigra sa</li>
-              <li>Diplomas</li>
-              <li>Entradas numeradas</li>
-              <li>Revistas</li>
-              <li>Y más</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Hojas de facturación electrónica</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Blocks y anotadores</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Formularios</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Papel antigrasa</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Diplomas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Entradas numeradas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Revistas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Y más</li>
             </ul>
-          </div>
+          </article>
         </section>
 
         {/* Nota final */}
-        <section className="mt-12 rounded-2xl bg-slate-50 p-6 text-sm text-slate-700">
+        <section className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-sm text-slate-700">
           <p className="font-semibold text-slate-900">
             ¿No encontrás lo que buscás?
           </p>
-          <p className="mt-2 max-w-2xl">
+          <p className="mt-2 max-w-xl">
             Muchos trabajos los desarrollamos a medida combinando distintas tecnologías y
             terminaciones. Si tenés una idea específica o un proyecto especial, escribinos
             y te ayudamos a definir el mejor formato de impresión.
+          </p>
+          <p className="mt-4 text-sm">
+            ¿Querés presupuestar alguno de estos trabajos?{' '}
+            <a
+              href="/presupuesto"
+              className="font-semibold text-brand-magenta hover:text-brand-rosa"
+            >
+              Pedir un presupuesto →
+            </a>
           </p>
         </section>
       </div>
