@@ -1,5 +1,11 @@
 // src/app/productos/page.tsx
+import type { Metadata } from "next";
 import { ProductCard } from "../components/ProductCard";
+
+export const metadata: Metadata = {
+  title: "Productos impresos – Bolsas, packaging, volantes y más | Imprenta Magenta",
+  description: "Bolsas de papel, packaging gastronómico, volantes, tarjetas personales, adhesivos, revistas y otras piezas impresas para tu marca.",
+};
 
 const PRODUCTS = [
   {

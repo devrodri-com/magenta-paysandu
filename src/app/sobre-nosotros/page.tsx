@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sobre Imprenta Magenta – Historia y equipo en Paysandú",
+  description: "Conocé la historia, experiencia y equipo de Imprenta Magenta, una imprenta moderna en Paysandú con más de 15 años de trayectoria.",
+};
+
 export default function SobreNosotrosPage() {
   return (
     <main className="min-h-screen bg-white px-4 py-16">

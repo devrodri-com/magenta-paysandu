@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Testimonios de clientes – Imprenta Magenta Paysandú",
+  description: "Opiniones y experiencias de emprendedores, comercios y empresas que confían en Imprenta Magenta para sus trabajos impresos.",
+};
+
 export default function TestimoniosPage() {
   return (
     <main className="min-h-screen bg-white px-4 py-16">

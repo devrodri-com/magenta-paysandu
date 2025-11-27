@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio de trabajos – Imprenta Magenta Paysandú",
+  description: "Galería de trabajos realizados: bolsas personalizadas, packaging gastronómico, etiquetas, afiches y otras piezas impresas para clientes reales.",
+};
+
 export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-white px-4 py-16">

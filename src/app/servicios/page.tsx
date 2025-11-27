@@ -1,5 +1,11 @@
 // src/app/servicios/page.tsx
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Servicios de impresión en Paysandú – Imprenta Magenta",
+  description: "Conocé los servicios de impresión digital, offset y plotter de corte de Imprenta Magenta para packaging, bolsas, volantes, afiches y material administrativo.",
+};
 
 export default function ServiciosPage() {
   return (
