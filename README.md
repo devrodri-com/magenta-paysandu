@@ -1,4 +1,4 @@
-# Imprenta Magenta Paysandú — Website
+# Imprenta Magenta Paysandú - Website
 
 Sitio web moderno desarrollado para **Imprenta Magenta Paysandú**, una imprenta con más de 15 años de trayectoria en impresión digital, offset, packaging gastronómico, papelería corporativa y productos personalizados.
 
