@@ -51,20 +51,20 @@ export default function Home() {
       {/* BENEFICIOS CLAVE */}
       <section className="border-t border-slate-800/40 bg-slate-900 text-slate-100">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:py-5">
-          <div className="grid gap-4 text-xs sm:text-sm md:grid-cols-2 lg:grid-cols-4">
-            <div className="flex items-center gap-2">
+          <div className="grid gap-4 text-center text-xs sm:text-sm md:grid-cols-2 lg:grid-cols-4 md:text-left">
+            <div className="flex items-center justify-center gap-2 md:justify-start">
               <LuMessageCircle className="h-5 w-5 text-brand-rosaClaro" />
               <span className="font-medium">Respuesta inmediata por WhatsApp</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 md:justify-start">
               <LuClock3 className="h-5 w-5 text-brand-rosaClaro" />
               <span className="font-medium">Entregas gratis disponibles</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 md:justify-start">
               <LuLayers className="h-5 w-5 text-brand-rosaClaro" />
               <span className="font-medium">Impresión premium y terminaciones</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 md:justify-start">
               <LuTruck className="h-5 w-5 text-brand-rosaClaro" />
               <span className="font-medium">Retiro en local o envíos</span>
             </div>
@@ -81,7 +81,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Soluciones de impresión para tu marca
           </h2>
-          <p className="mt-3 text-sm text-slate-600 sm:text-base whitespace-nowrap">
+          <p className="mt-3 text-sm text-slate-600 sm:text-base whitespace-normal">
             Las piezas impresas clave que impulsan tu identidad: bolsas, packaging, folletos, papelería y más.
           </p>
 
