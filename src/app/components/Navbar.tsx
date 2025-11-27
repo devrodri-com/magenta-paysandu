@@ -57,7 +57,7 @@ export default function Navbar() {
 
           {/* CTA principal */}
           <a
-            href="/contacto"
+            href="/presupuesto"
             className="rounded-full bg-brand-magenta px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-rosa transition"
           >
             Pedir presupuesto
@@ -123,7 +123,7 @@ export default function Navbar() {
               Trabajos
             </a>
             <a
-              href="/contacto"
+              href="/presupuesto"
               className="mt-2 rounded-full bg-brand-magenta px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-rosa transition"
               onClick={() => setIsOpen(false)}
             >
