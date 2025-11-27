@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Imprenta Magenta Paysandú — Website
 
-## Getting Started
+Sitio web moderno desarrollado para **Imprenta Magenta Paysandú**, una imprenta con más de 15 años de trayectoria en impresión digital, offset, packaging gastronómico, papelería corporativa y productos personalizados.
 
-First, run the development server:
+Este proyecto está construido con **Next.js 16**, **TypeScript**, **TailwindCSS** y un diseño totalmente optimizado para mobile y performance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Tecnologías principales
+
+- **Next.js 16 (App Router)**
+- **React 18**
+- **TypeScript**
+- **Tailwind CSS**
+- **Vercel** (hosting y CI/CD)
+- **React Icons**
+- **Optimización automática de imágenes (`next/image`)**
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+src/
+ └─ app/
+     ├─ page.tsx                 → Landing principal
+     ├─ components/              → Navbar, ProductCard, etc.
+     ├─ productos/               → Página de productos
+     ├─ servicios/               → Página de servicios
+     ├─ sobre-nosotros/          → Página institucional
+     ├─ testimonios/             → Página de testimonios
+     └─ portfolio/               → Trabajos realizados
+public/
+ └─ images/                      → Logos, mockups y recursos visuales
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Desarrollo local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Abrir en el navegador:
+```
+http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🏗️ Build de producción
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este proyecto se deploya automáticamente a **Vercel** cada vez que se hace push al branch `main`.
+
+Para hacer un deploy manual:
+```bash
+git add .
+git commit -m "deploy"
+git push
+```
+
+Vercel detecta el push → ejecuta build → publica la nueva versión del sitio.
+
+---
+
+## ✨ Características destacadas del sitio
+
+- **Hero full-brand** con degradado Magenta.
+- **Barra de beneficios** (WhatsApp inmediato, entregas gratis, impresión premium, envíos y retiros).
+- **Catálogo visual de productos principales** con mockups generados especialmente.
+- **Secciones institucionales:** Sobre nosotros, testimonios, portfolio.
+- **Formulario de contacto completo** + CTA directo a WhatsApp.
+- **Diseño responsive premium**, optimizado para conversión.
+
+---
+
+## 📦 Créditos
+- Diseño, desarrollo y estructura: **Rodrigo (devrodri-com)**
+- Branding e identidad: **Imprenta Magenta Paysandú**
+- Mockups generados con IA: **Sora**
+
+---
+
+## 📄 Licencia
+Código privado — uso exclusivo de Imprenta Magenta Paysandú.
