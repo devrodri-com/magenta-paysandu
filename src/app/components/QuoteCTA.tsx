@@ -12,7 +12,7 @@ export default function QuoteCTA() {
               packaging, etc.) y te ayudamos a definir el mejor formato para tu proyecto.
             </p>
   
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="https://wa.me/59898273040"
                 target="_blank"
@@ -23,7 +23,7 @@ export default function QuoteCTA() {
               </a>
               <a
                 href="/presupuesto"
-                className="text-sm font-semibold text-slate-100 hover:text-brand-rosaClaro"
+                className="rounded-full border border-slate-300/40 px-6 py-3 text-sm font-semibold text-slate-100 hover:border-brand-rosaClaro hover:text-brand-rosaClaro transition"
               >
                 Completar formulario de presupuesto
               </a>

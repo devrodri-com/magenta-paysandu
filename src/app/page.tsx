@@ -6,6 +6,7 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import AboutSection from "./components/AboutSection";
 import Testimonials from "./components/Testimonials";
 import QuoteCTA from "./components/QuoteCTA";
+import ClientsStrip from "./components/ClientsStrip";
 
 export default function Home() {
   return (
@@ -27,6 +28,9 @@ export default function Home() {
 
       {/* PEDIR PRESUPUESTO */}
       <QuoteCTA />
+
+      {/* CLIENTES */}
+      <ClientsStrip />
     </main>
   );
 }
