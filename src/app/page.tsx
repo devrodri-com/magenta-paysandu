@@ -1,5 +1,7 @@
 // src/app/page.tsx
 import Image from "next/image";
+import { ProductCard } from "./components/ProductCard";
+import { LuClock3, LuMessageCircle, LuLayers, LuTruck } from "react-icons/lu";
 
 export default function Home() {
   return (
@@ -46,6 +48,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BENEFICIOS CLAVE */}
+      <section className="border-t border-slate-800/40 bg-slate-900 text-slate-100">
+        <div className="mx-auto max-w-6xl px-4 py-4 sm:py-5">
+          <div className="grid gap-4 text-xs sm:text-sm md:grid-cols-2 lg:grid-cols-4">
+            <div className="flex items-center gap-2">
+              <LuMessageCircle className="h-5 w-5 text-brand-rosaClaro" />
+              <span className="font-medium">Respuesta inmediata por WhatsApp</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <LuClock3 className="h-5 w-5 text-brand-rosaClaro" />
+              <span className="font-medium">Entregas gratis disponibles</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <LuLayers className="h-5 w-5 text-brand-rosaClaro" />
+              <span className="font-medium">Impresión premium y terminaciones</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <LuTruck className="h-5 w-5 text-brand-rosaClaro" />
+              <span className="font-medium">Retiro en local o envíos</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTOS / CATEGORÍAS PRINCIPALES */}
       <section
         id="servicios"
@@ -53,10 +79,10 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Productos principales
+            Soluciones de impresión para tu marca
           </h2>
-          <p className="mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
-            Te ofrecemos una variedad de productos impresos para potenciar tu negocio.
+          <p className="mt-3 text-sm text-slate-600 sm:text-base whitespace-nowrap">
+            Las piezas impresas clave que impulsan tu identidad: bolsas, packaging, folletos, papelería y más.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -64,54 +90,63 @@ export default function Home() {
               {
                 nombre: "Bolsas de papel",
                 texto:
-                  "Bolsas personalizadas con tu logo para locales comerciales, eventos y packaging premium.",
-              },
-              {
-                nombre: "Folletos y volantes",
-                texto:
-                  "Folletos A5, A6 y formatos especiales para promociones, menús y campañas publicitarias.",
-              },
-              {
-                nombre: "Papelería corporativa",
-                texto:
-                  "Tarjetas personales, hojas membretadas, sobres y talonarios que refuerzan la identidad de tu marca.",
+                  "Bolsas de papel personalizadas con tu logo, ideales para locales comerciales, eventos y packaging de marca.",
+                imagen: "bolsas2.jpg",
               },
               {
                 nombre: "Packaging impreso",
                 texto:
-                  "Cajas, bandejas y otros empaques a medida para presentar tus productos de forma profesional.",
+                  "Cajas, bandejas y otros empaques impresos a medida para presentar y proteger tus productos.",
+                imagen: "packaging1.jpg",
+              },
+              {
+                nombre: "Folletos y volantes",
+                texto:
+                  "Folletos y volantes en distintos formatos para promociones, campañas y menús informativos.",
+                imagen: "folletos2.jpg",
+              },
+              {
+                nombre: "Papelería corporativa",
+                texto:
+                  "Tarjetas personales, hojas membretadas, sobres y talonarios que mantienen tu identidad de marca consistente.",
+                imagen: "papeleria1.jpg",
               },
               {
                 nombre: "Revistas y catálogos",
                 texto:
-                  "Revistas, catálogos y dípticos/trípticos para mostrar tus productos y servicios con impacto.",
+                  "Revistas, catálogos y dípticos/trípticos con acabado profesional para mostrar tu oferta de productos y servicios.",
+                imagen: "revistas1.jpg",
               },
               {
                 nombre: "Etiquetas y adhesivos",
                 texto:
-                  "Stickers, etiquetas y autoadhesivos para productos, packaging y señalización interna.",
+                  "Etiquetas y adhesivos troquelados para productos, packaging y señalización interna.",
+                imagen: "etiquetas.jpg",
               },
             ].map((item) => (
-              <article
+              <ProductCard
                 key={item.nombre}
-                className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6 shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Acá después metemos imagen real */}
-                <div className="mb-4 h-28 rounded-xl bg-slate-200/80" />
-
-                <h3 className="text-base font-semibold text-slate-900">
-                  {item.nombre}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  {item.texto}
-                </p>
-              </article>
+                title={item.nombre}
+                description={item.texto}
+                imageSrc={`/images/productos/${item.imagen}`}
+              />
             ))}
           </div>
+
+          <p className="mt-8 text-sm text-slate-600 sm:text-base">
+            ¿Querés ver más opciones? Visitá la sección de{" "}
+            <a
+              href="/servicios"
+              className="font-semibold text-brand-magenta hover:text-brand-rosa"
+            >
+              servicios
+            </a>{" "}
+            o escribinos para asesorarte sobre el producto ideal para tu negocio.
+          </p>
         </div>
       </section>
 
-      {/* QUIÉNES SOMOS + MAPA (placeholder) */}
+      {/* QUIÉNES SOMOS + MAPA */}
       <section className="bg-pink-50 py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2">
           <div>
@@ -131,13 +166,22 @@ export default function Home() {
           </div>
 
           <div className="rounded-2xl border border-pink-100 bg-white p-4 shadow-sm">
-            <p className="text-sm font-semibold text-slate-900">
-              ¿Dónde estamos?
-            </p>
+            <p className="text-sm font-semibold text-slate-900">¿Dónde estamos?</p>
             <p className="mt-1 text-sm text-slate-700">
               Calle 46 Norte 987, Paysandú, Uruguay.
             </p>
-            <div className="mt-4 h-56 w-full rounded-xl bg-slate-200">
+
+            <div className="mt-4 overflow-hidden rounded-xl">
+              <Image
+                src="/images/hero-image.jpg"
+                alt="Fachada de Imprenta Magenta en Paysandú"
+                width={800}
+                height={500}
+                className="h-40 w-full object-cover"
+              />
+            </div>
+
+            <div className="mt-4 h-40 w-full rounded-xl bg-slate-200">
               {/* Aquí luego incrustamos el mapa real */}
             </div>
           </div>
@@ -158,10 +202,7 @@ export default function Home() {
       </section>
 
       {/* CONTACTO / CTA FINAL */}
-      <section
-        id="contacto"
-        className="bg-slate-900 py-16 sm:py-20 text-white"
-      >
+      <section id="contacto" className="bg-slate-900 py-16 sm:py-20 text-white">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr),minmax(0,1fr)] items-center">
             <div>
@@ -204,9 +245,7 @@ export default function Home() {
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-xs font-medium text-slate-200">
-                    Email
-                  </label>
+                  <label className="block text-xs font-medium text-slate-200">Email</label>
                   <input
                     type="email"
                     className="mt-1 w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-pink-400"
@@ -214,9 +253,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-200">
-                    WhatsApp
-                  </label>
+                  <label className="block text-xs font-medium text-slate-200">WhatsApp</label>
                   <input
                     type="tel"
                     className="mt-1 w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-pink-400"
@@ -235,9 +272,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  Mensaje
-                </label>
+                <label className="block text-xs font-medium text-slate-200">Mensaje</label>
                 <textarea
                   className="mt-1 w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-pink-400"
                   rows={4}
