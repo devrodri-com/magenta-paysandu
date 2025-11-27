@@ -43,7 +43,7 @@ export default function Footer() {
             <p className="mt-2 text-sm text-slate-300">
               WhatsApp: <span className="font-semibold">098 273 040</span>
               <br />
-              Email: <span className="font-semibold">imprentamagentauy@gmail.com</span>
+              Email: <span className="font-semibold">info@magentauruguay.com</span>
             </p>
           </div>
 

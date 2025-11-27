@@ -153,7 +153,7 @@ export default function PresupuestoPage() {
                 Escribir por WhatsApp
               </a>
               <a
-                href="mailto:imprentamagentauy@gmail.com"
+                href="mailto:info@magentauruguay.com"
                 className="rounded-full border border-slate-300/40 px-6 py-3 text-sm font-semibold text-slate-100 hover:border-brand-rosaClaro hover:text-brand-rosaClaro transition"
               >
                 Enviar un email
