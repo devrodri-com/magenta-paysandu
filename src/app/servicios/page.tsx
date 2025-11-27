@@ -1,16 +1,156 @@
 // src/app/servicios/page.tsx
+import Image from "next/image";
+
 export default function ServiciosPage() {
-    return (
-      <main className="min-h-screen bg-white px-4 py-16">
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-            Servicios
+  return (
+    <main className="min-h-screen bg-white px-4 py-16">
+      <div className="mx-auto max-w-6xl">
+        <header className="max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            Nuestros servicios
           </h1>
           <p className="mt-4 text-sm text-slate-700 sm:text-base">
-            Próximamente vamos a detallar acá todos los servicios de impresión digital,
-            offset, diseño y packaging de Imprenta Magenta.
+            En Imprenta Magenta combinamos impresión digital, impresión offset y plotter de
+            corte para ofrecer soluciones gráficas completas: desde packaging gastronómico
+            y bolsas de papel hasta afiches, tarjetas, libretas y más.
           </p>
-        </div>
-      </main>
-    );
-  }
+        </header>
+
+        {/* Tecnologías principales */}
+        <section className="mt-12 grid gap-10 md:grid-cols-3">
+          <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
+              Impresión digital
+            </h2>
+            <p className="mt-3 text-sm text-slate-700">
+              Ideal para tiradas cortas y trabajos urgentes. Gran velocidad y calidad de
+              impresión para piezas personalizadas.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-700">
+              <li>Tiradas cortas y personalizadas</li>
+              <li>Correcciones rápidas</li>
+              <li>Colores vibrantes y definición precisa</li>
+            </ul>
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
+              {/* Próximamente: foto de la impresora digital */}
+              <Image
+                src="/images/servicios/digital.jpg"
+                alt="Impresora digital de Imprenta Magenta"
+                width={400}
+                height={200}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
+              Impresión offset
+            </h2>
+            <p className="mt-3 text-sm text-slate-700">
+              La mejor opción para grandes cantidades, con costos accesibles por unidad y
+              excelente fidelidad de color.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-700">
+              <li>Grandes tiradas con bajo costo por unidad</li>
+              <li>Diferentes papeles y texturas</li>
+              <li>Calidad constante en cada impresión</li>
+            </ul>
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
+              {/* Próximamente: foto de la máquina offset */}
+              <Image
+                src="/images/servicios/offset1.jpg"
+                alt="Máquina de impresión offset de Imprenta Magenta"
+                width={400}
+                height={200}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
+              Plotter de corte
+            </h2>
+            <p className="mt-3 text-sm text-slate-700">
+              Permite realizar adhesivos y etiquetas con formas especiales, con rapidez y
+              precisión en el corte.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-700">
+              <li>Adhesivos con formas personalizadas</li>
+              <li>Etiquetas y stickers en distintos formatos</li>
+              <li>Corte preciso y rápido</li>
+            </ul>
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
+              {/* Próximamente: foto del plotter de corte */}
+              <Image
+                src="/images/servicios/plotter.jpg"
+                alt="Plotter de corte de Imprenta Magenta"
+                width={400}
+                height={200}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </article>
+        </section>
+
+        {/* Listado de productos y servicios */}
+        <section className="mt-16 grid gap-10 md:grid-cols-2">
+          <div>
+            <h2 className="text-base font-semibold text-slate-900">
+              Productos impresos
+            </h2>
+            <p className="mt-2 text-sm text-slate-700">
+              Trabajamos una amplia variedad de piezas para cubrir las necesidades de tu
+              negocio.
+            </p>
+            <ul className="mt-4 grid grid-cols-1 gap-1 text-sm text-slate-800 sm:grid-cols-2">
+              <li>Packaging (cajas, bandejas, etc.)</li>
+              <li>Bolsas de papel</li>
+              <li>Volantes</li>
+              <li>Afiches</li>
+              <li>Tarjetas personales</li>
+              <li>Adhesivos y etiquetas</li>
+              <li>Carpetas</li>
+              <li>Sobres</li>
+              <li>Libretas</li>
+              <li>Plastificado</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-base font-semibold text-slate-900">
+              Formularios y piezas especiales
+            </h2>
+            <p className="mt-2 text-sm text-slate-700">
+              También realizamos material administrativo y proyectos a medida para tu
+              empresa o emprendimiento.
+            </p>
+            <ul className="mt-4 grid grid-cols-1 gap-1 text-sm text-slate-800 sm:grid-cols-2">
+              <li>Hojas de facturación electrónica</li>
+              <li>Blocks y anotadores</li>
+              <li>Formularios</li>
+              <li>Papel antigra sa</li>
+              <li>Diplomas</li>
+              <li>Entradas numeradas</li>
+              <li>Revistas</li>
+              <li>Y más</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Nota final */}
+        <section className="mt-12 rounded-2xl bg-slate-50 p-6 text-sm text-slate-700">
+          <p className="font-semibold text-slate-900">
+            ¿No encontrás lo que buscás?
+          </p>
+          <p className="mt-2 max-w-2xl">
+            Muchos trabajos los desarrollamos a medida combinando distintas tecnologías y
+            terminaciones. Si tenés una idea específica o un proyecto especial, escribinos
+            y te ayudamos a definir el mejor formato de impresión.
+          </p>
+        </section>
+      </div>
+    </main>
+  );
+}
