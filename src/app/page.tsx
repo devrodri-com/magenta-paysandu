@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import BenefitsBar from "./components/BenefitsBar";
 import FeaturedProducts from "./components/FeaturedProducts";
 import AboutSection from "./components/AboutSection";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
@@ -21,17 +22,7 @@ export default function Home() {
       <AboutSection />
 
       {/* TESTIMONIOS (placeholder) */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Lo que dicen nuestros clientes
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
-            Próximamente vamos a sumar testimonios de clientes que confían en Magenta
-            para sus impresos.
-          </p>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* CONTACTO / CTA FINAL */}
       <section id="contacto" className="bg-slate-900 py-16 sm:py-20 text-white">
