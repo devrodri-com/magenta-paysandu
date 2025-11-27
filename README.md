@@ -117,7 +117,7 @@ git push
 
 ## 📦 Créditos
 
-- **Diseño y desarrollo:** Rodrigo Opalo (devrodri-com) - https://devrodri.com
+- **Diseño y desarrollo:** Rodrigo Opalo - https://devrodri.com
 - **Branding e identidad:** Imprenta Magenta Paysandú
 - **Mockups:** generados con IA (Sora)
 
