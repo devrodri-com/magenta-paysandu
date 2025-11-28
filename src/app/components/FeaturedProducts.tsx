@@ -38,7 +38,7 @@ export default function FeaturedProducts() {
               nombre: "Papelería corporativa",
               texto:
                 "Tarjetas personales, hojas membretadas, sobres y talonarios que mantienen tu identidad de marca consistente.",
-              imagen: "papeleria1.jpg",
+              imagen: "papeleria.jpg",
             },
             {
               nombre: "Revistas y catálogos",

@@ -21,7 +21,7 @@ export const PRODUCTS = [
     nombre: "Papelería corporativa",
     texto:
       "Tarjetas personales con diferentes papeles y terminaciones, para una primera impresión profesional.",
-    imagen: "papeleria1.jpg",
+    imagen: "papeleria.jpg",
   },
   {
     nombre: "Etiquetas y adhesivos",
