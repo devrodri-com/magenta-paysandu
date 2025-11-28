@@ -25,3 +25,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Marquee animation for client logos strip */
+.clients-marquee {
+  animation: clients-marquee 40s linear infinite;
+}
+
+@keyframes clients-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
