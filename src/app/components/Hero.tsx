@@ -34,7 +34,7 @@ export default function Hero() {
 
         {/* Sello 15 años */}
         <Image
-          src="/images/15anos.png"
+          src="/images/15anos.svg"
           alt="15 años de Imprenta Magenta"
           width={260}
           height={260}
