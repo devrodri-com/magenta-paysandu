@@ -6,10 +6,26 @@ import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <a
+      href={href}
+      className={`pb-1 border-b-2 transition-colors ${
+        isActive
+          ? "border-brand-magenta text-brand-magenta font-semibold"
+          : "border-transparent text-slate-800 hover:text-brand-magenta hover:border-brand-magenta/70"
+      }`}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Inicio" },
@@ -36,23 +52,11 @@ export default function Navbar() {
         <div className="hidden items-center gap-8 text-sm font-medium text-slate-800 sm:flex">
           {/* Links */}
           <div className="flex items-center gap-8 text-base">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`pb-1 border-b-2 transition-colors ${
-                    isActive
-                      ? "border-brand-magenta text-brand-magenta font-semibold"
-                      : "border-transparent text-slate-800 hover:text-brand-magenta hover:border-brand-magenta/70"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <NavLink key={link.href} href={link.href}>
+                {link.label}
+              </NavLink>
+            ))}
           </div>
 
           {/* CTA principal */}
