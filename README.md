@@ -115,6 +115,14 @@ git push
 
 ---
 
+## 🆕 Mejoras de arquitectura y mantenibilidad
+
+- Datos de productos y preguntas del formulario extraídos a módulos independientes en `src/data/`
+- Refactor del Navbar utilizando un componente `NavLink` para encapsular la lógica de enlaces activos
+- Separación más clara entre componentes cliente y servidor siguiendo buenas prácticas del App Router de Next.js
+
+---
+
 ## 📦 Créditos
 
 - **Diseño y desarrollo:** Rodrigo Opalo - https://devrodri.com
