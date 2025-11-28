@@ -20,19 +20,19 @@ export default function FeaturedProducts() {
               nombre: "Bolsas de papel",
               texto:
                 "Bolsas de papel personalizadas con tu logo, ideales para locales comerciales, eventos y packaging de marca.",
-              imagen: "bolsas2.jpg",
+              imagen: "bolsas.jpg",
             },
             {
               nombre: "Packaging impreso",
               texto:
                 "Cajas, bandejas y otros empaques impresos a medida para presentar y proteger tus productos.",
-              imagen: "packaging1.jpg",
+              imagen: "packaging.jpg",
             },
             {
               nombre: "Folletos y volantes",
               texto:
                 "Folletos y volantes en distintos formatos para promociones, campañas y menús informativos.",
-              imagen: "folletos2.jpg",
+              imagen: "folletos.jpg",
             },
             {
               nombre: "Papelería corporativa",
@@ -44,7 +44,7 @@ export default function FeaturedProducts() {
               nombre: "Revistas y catálogos",
               texto:
                 "Revistas, catálogos y dípticos/trípticos con acabado profesional para mostrar tu oferta de productos y servicios.",
-              imagen: "revistas1.jpg",
+              imagen: "revistas.jpg",
             },
             {
               nombre: "Etiquetas y adhesivos",
