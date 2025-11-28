@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-full bg-slate-800">
                 <Image
-                  src="/images/Logo-blanco.webp"
+                  src="/images/Logo-blanco.svg"
                   alt="Logo Imprenta Magenta"
                   fill
                   className="object-contain p-1"
