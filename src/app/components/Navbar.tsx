@@ -6,20 +6,29 @@ import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
   return (
-    <a
-      href={href}
-      className={`pb-1 border-b-2 transition-colors ${
-        isActive
-          ? "border-brand-magenta text-brand-magenta font-semibold"
-          : "border-transparent text-slate-800 hover:text-brand-magenta hover:border-brand-magenta/70"
-      }`}
-    >
-      {children}
+    <a href={href} onClick={onClick} className="pb-1 transition-colors">
+      <span
+        className={`inline-block border-b-2 ${
+          isActive
+            ? "border-brand-magenta text-brand-magenta font-semibold"
+            : "border-transparent text-slate-800 hover:text-brand-magenta hover:border-brand-magenta/70"
+        }`}
+      >
+        {children}
+      </span>
     </a>
   );
 }
@@ -114,18 +123,18 @@ export default function Navbar() {
       {isOpen && (
         <div className="border-t border-slate-200 bg-white sm:hidden">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 text-sm font-medium text-slate-800">
-            <a href="/" className="py-1" onClick={() => setIsOpen(false)}>
+            <NavLink href="/" onClick={() => setIsOpen(false)}>
               Inicio
-            </a>
-            <a href="/servicios" className="py-1" onClick={() => setIsOpen(false)}>
+            </NavLink>
+            <NavLink href="/servicios" onClick={() => setIsOpen(false)}>
               Servicios
-            </a>
-            <a href="/productos" className="py-1" onClick={() => setIsOpen(false)}>
+            </NavLink>
+            <NavLink href="/productos" onClick={() => setIsOpen(false)}>
               Productos
-            </a>
-            <a href="/portfolio" className="py-1" onClick={() => setIsOpen(false)}>
+            </NavLink>
+            <NavLink href="/portfolio" onClick={() => setIsOpen(false)}>
               Trabajos
-            </a>
+            </NavLink>
             <a
               href="/presupuesto"
               className="mt-2 rounded-full bg-brand-magenta px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-rosa transition"
