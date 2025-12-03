@@ -1,11 +1,25 @@
-import Image from "next/image";
+// src/app/components/ClientsStrip.tsx
 
+import Image from "next/image";
 const CLIENT_LOGOS = [
-  { src: "/images/clientes/cliente1.png", alt: "Cliente 1" },
-  { src: "/images/clientes/cliente2.png", alt: "Cliente 2" },
-  { src: "/images/clientes/cliente3.png", alt: "Cliente 3" },
-  { src: "/images/clientes/cliente4.png", alt: "Cliente 4" },
-  // Cuando tengas más logos, agregalos acá
+  { src: "/images/clientes/1.svg", alt: "Cliente 1" },
+  { src: "/images/clientes/2.svg", alt: "Cliente 2" },
+  { src: "/images/clientes/3.svg", alt: "Cliente 3" },
+  { src: "/images/clientes/4.svg", alt: "Cliente 4" },
+  { src: "/images/clientes/5.svg", alt: "Cliente 5" },
+  { src: "/images/clientes/6.svg", alt: "Cliente 6" },
+  { src: "/images/clientes/7.svg", alt: "Cliente 7" },
+  { src: "/images/clientes/8.svg", alt: "Cliente 8" },
+  { src: "/images/clientes/9.svg", alt: "Cliente 9" },
+  { src: "/images/clientes/10.svg", alt: "Cliente 10" },
+  { src: "/images/clientes/11.svg", alt: "Cliente 11" },
+  { src: "/images/clientes/12.svg", alt: "Cliente 12" },
+  { src: "/images/clientes/13.svg", alt: "Cliente 13" },
+  { src: "/images/clientes/14.svg", alt: "Cliente 14" },
+  { src: "/images/clientes/15.svg", alt: "Cliente 15" },
+  { src: "/images/clientes/16.svg", alt: "Cliente 16" },
+  { src: "/images/clientes/17.svg", alt: "Cliente 17" },
+  { src: "/images/clientes/18.svg", alt: "Cliente 18" },
 ];
 
 export default function ClientsStrip() {
@@ -21,7 +35,7 @@ export default function ClientsStrip() {
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, index) => (
               <div
                 key={`${logo.src}-${index}`}
-                className="flex min-w-[120px] justify-center opacity-80"
+                className="flex min-w-[120px] justify-center opacity-80 bg-[#a2a2a2] rounded-xl p-3"
               >
                 <Image
                   src={logo.src}
