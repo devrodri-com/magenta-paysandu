@@ -11,6 +11,9 @@ export default function QuoteCTA() {
               Contanos qué tipo de trabajo necesitás (tarjetas, bolsas, folletos, revistas,
               packaging, etc.) y te ayudamos a definir el mejor formato para tu proyecto.
             </p>
+            <p className="text-sm text-slate-200 sm:text-base mt-2">
+              Si necesitás un trabajo que no está en la lista, escribinos. También realizamos productos a medida según tus necesidades.
+            </p>
   
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
