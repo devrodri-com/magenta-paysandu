@@ -19,12 +19,11 @@ Este MVP incluye:
 ## 🚀 Tecnologías principales
 
 - **Next.js 16 (App Router)**
-- **React 18 + TypeScript**
+- **React 19 + TypeScript**
 - **Tailwind CSS**
 - **next/image**
 - **Vercel**
 - **React Icons**
-
 ---
 
 ## 🌐 Sitio online

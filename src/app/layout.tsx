@@ -59,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="bg-slate-950 text-slate-900 antialiased">
+      <body className="bg-slate-950 text-slate-100 antialiased">
         {/* NAVBAR */}
         <Navbar />
 

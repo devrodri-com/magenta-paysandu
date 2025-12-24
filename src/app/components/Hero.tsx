@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WHATSAPP_URL_TEXT } from "@/data/contact";
 
 export default function Hero() {
   return (
@@ -19,7 +20,9 @@ export default function Hero() {
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
-            href="#contacto"
+            href={WHATSAPP_URL_TEXT}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-brand-rosa transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta/70"
           >
             Escribinos por WhatsApp
@@ -32,13 +35,21 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Sello 15 años */}
+        {/* Sello 15 años - mobile watermark */}
+        <Image
+          src="/images/15anos.svg"
+          alt="15 años de experiencia"
+          width={120}
+          height={120}
+          className="pointer-events-none select-none md:hidden absolute top-44 right-2 opacity-10 z-0 w-24 h-auto"        />
+
+        {/* Sello 15 años - desktop */}
         <Image
           src="/images/15anos.svg"
           alt="15 años de Imprenta Magenta"
           width={260}
           height={260}
-          className="pointer-events-none select-none hidden md:block absolute right-6 bottom-10 opacity-25"
+          className="pointer-events-none select-none hidden md:block absolute right-6 bottom-10 opacity-25 z-0"
         />
       </div>
     </section>

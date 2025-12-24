@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProductCard } from "./ProductCard";
 
 export default function FeaturedProducts() {
@@ -64,12 +65,12 @@ export default function FeaturedProducts() {
 
         <p className="mt-8 text-sm text-slate-600 sm:text-base">
           ¿Querés ver más opciones? Visitá la sección de{" "}
-          <a
+          <Link
             href="/servicios"
             className="font-semibold text-brand-magenta hover:text-brand-rosa"
           >
             servicios
-          </a>{" "}
+          </Link>{" "}
           o escribinos para asesorarte sobre el producto ideal para tu negocio.
         </p>
       </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { LuChevronDown } from "react-icons/lu";
 import { QUESTION_SETS } from "@/data/questionSets";
+import { WHATSAPP_URL_TEXT } from "@/data/contact";
 
 type JobTypeOption = {
   value: string;
@@ -29,13 +30,41 @@ interface JobTypeSelectProps {
 
 function JobTypeSelect({ value, onChange }: JobTypeSelectProps) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownId = "job-type-dropdown";
 
   const selected = JOB_TYPE_OPTIONS.find((opt) => opt.value === value);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+
   return (
-    <div className="relative mt-1">
+    <div ref={dropdownRef} className="relative mt-1">
       <button
         type="button"
+        aria-expanded={open}
+        aria-controls={open ? dropdownId : undefined}
         className="flex w-full items-center justify-between rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-left text-sm text-white outline-none focus:border-brand-magenta focus:ring-1 focus:ring-brand-magenta/70"
         onClick={() => setOpen((prev) => !prev)}
       >
@@ -46,7 +75,7 @@ function JobTypeSelect({ value, onChange }: JobTypeSelectProps) {
       </button>
 
       {open && (
-        <div className="absolute z-20 mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 py-1 text-sm text-slate-100 shadow-lg">
+        <div id={dropdownId} className="absolute z-20 mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 py-1 text-sm text-slate-100 shadow-lg">
           {JOB_TYPE_OPTIONS.map((opt) => (
             <button
               key={opt.value}
@@ -86,9 +115,9 @@ export default function PresupuestoPage() {
   
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <a
-                href="https://wa.me/59898273040"
+                href={WHATSAPP_URL_TEXT}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-brand-rosa transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta/70"
               >
                 Escribir por WhatsApp

@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
+import { WHATSAPP_URL } from "@/data/contact";
 
 function NavLink({
   href,
@@ -19,7 +21,7 @@ function NavLink({
   const isActive = pathname === href;
 
   return (
-    <a href={href} onClick={onClick} className="pb-1 transition-colors">
+    <Link href={href} onClick={onClick} className="pb-1 transition-colors">
       <span
         className={`inline-block border-b-2 ${
           isActive
@@ -29,7 +31,7 @@ function NavLink({
       >
         {children}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -47,7 +49,7 @@ export default function Navbar() {
     <nav className="border-b border-slate-200 bg-white sticky top-0 z-50">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/images/logo.svg"
             alt="Logo Imprenta Magenta"
@@ -55,7 +57,7 @@ export default function Navbar() {
             height={48}
             className="h-12 w-auto object-contain"
           />
-        </a>
+        </Link>
 
         {/* Links desktop */}
         <div className="hidden items-center gap-8 text-sm font-medium text-slate-800 sm:flex">
@@ -69,19 +71,19 @@ export default function Navbar() {
           </div>
 
           {/* CTA principal */}
-          <a
+          <Link
             href="/presupuesto"
             className="rounded-full bg-brand-magenta px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-rosa transition"
           >
             Pedir presupuesto
-          </a>
+          </Link>
 
           {/* Iconos redes */}
           <div className="flex items-center gap-4 text-xl">
             <a
-              href="https://wa.me/59898273040"
+              href={WHATSAPP_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-slate-600 hover:text-brand-magenta"
               aria-label="WhatsApp"
             >
@@ -90,7 +92,7 @@ export default function Navbar() {
             <a
               href="https://instagram.com/magentapaysandu"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-slate-600 hover:text-brand-magenta"
               aria-label="Instagram"
             >
@@ -99,7 +101,7 @@ export default function Navbar() {
             <a
               href="https://facebook.com/magentapaysandu"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-slate-600 hover:text-brand-magenta"
               aria-label="Facebook"
             >
@@ -135,19 +137,19 @@ export default function Navbar() {
             <NavLink href="/portfolio" onClick={() => setIsOpen(false)}>
               Trabajos
             </NavLink>
-            <a
+            <Link
               href="/presupuesto"
               className="mt-2 rounded-full bg-brand-magenta px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-rosa transition"
               onClick={() => setIsOpen(false)}
             >
               Pedir presupuesto
-            </a>
+            </Link>
 
             <div className="mt-2 flex items-center gap-4 text-xl">
               <a
-                href="https://wa.me/59898273040"
+                href={WHATSAPP_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-slate-600 hover:text-brand-magenta"
                 aria-label="WhatsApp"
               >
@@ -156,7 +158,7 @@ export default function Navbar() {
               <a
                 href="https://instagram.com/magentapaysandu"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-slate-600 hover:text-brand-magenta"
                 aria-label="Instagram"
               >
@@ -165,7 +167,7 @@ export default function Navbar() {
               <a
                 href="https://facebook.com/magentapaysandu"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-slate-600 hover:text-brand-magenta"
                 aria-label="Facebook"
               >

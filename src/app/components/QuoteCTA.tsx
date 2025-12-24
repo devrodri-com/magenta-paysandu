@@ -1,4 +1,7 @@
 // src/app/components/QuoteCTA.tsx
+import Link from "next/link";
+import { WHATSAPP_URL_TEXT } from "@/data/contact";
+
 export default function QuoteCTA() {
     return (
       <section className="bg-slate-900 py-16 sm:py-20 text-white">
@@ -17,19 +20,19 @@ export default function QuoteCTA() {
   
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href="https://wa.me/59898273040"
+                href={WHATSAPP_URL_TEXT}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-brand-rosa transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta/70"
               >
                 Escribir por WhatsApp
               </a>
-              <a
+              <Link
                 href="/presupuesto"
                 className="rounded-full border border-slate-300/40 px-6 py-3 text-sm font-semibold text-slate-100 hover:border-brand-rosaClaro hover:text-brand-rosaClaro transition"
               >
                 Completar formulario de presupuesto
-              </a>
+              </Link>
             </div>
           </div>
         </div>
