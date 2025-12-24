@@ -37,11 +37,10 @@ export default function ServiciosPage() {
               <li>Diferentes papeles y texturas</li>
               <li>Calidad constante en cada impresión</li>
             </ul>
-            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
-              {/* Próximamente: foto de la máquina offset */}
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl">
               <Image
-                src="/images/servicios/offset1.jpg"
-                alt="Máquina de impresión offset de Imprenta Magenta"
+                src="/images/servicios/heidelberg-speedmaster.jpg"
+                alt="Heidelberg Speedmaster - Máquina de impresión offset"
                 width={400}
                 height={200}
                 className="h-full w-full object-cover"
@@ -62,11 +61,10 @@ export default function ServiciosPage() {
               <li>Correcciones rápidas</li>
               <li>Colores vibrantes y definición precisa</li>
             </ul>
-            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
-              {/* Próximamente: foto de la impresora digital */}
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl">
               <Image
-                src="/images/servicios/digital.jpg"
-                alt="Impresora digital de Imprenta Magenta"
+                src="/images/servicios/konica-c3070l.jpg"
+                alt="Konica Minolta AccurioPrint C3070L - Impresora digital"
                 width={400}
                 height={200}
                 className="h-full w-full object-cover"
@@ -87,11 +85,10 @@ export default function ServiciosPage() {
               <li>Etiquetas y stickers en distintos formatos</li>
               <li>Corte preciso y rápido</li>
             </ul>
-            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
-              {/* Próximamente: foto del plotter de corte */}
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl">
               <Image
-                src="/images/servicios/plotter.jpg"
-                alt="Plotter de corte de Imprenta Magenta"
+                src="/images/servicios/toyocut.jpg"
+                alt="Toyocut - Plotter de corte"
                 width={400}
                 height={200}
                 className="h-full w-full object-cover"
