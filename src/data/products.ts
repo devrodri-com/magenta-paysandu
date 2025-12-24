@@ -39,14 +39,14 @@ export const PRODUCTS: Product[] = [
     texto:
       "Etiquetas y stickers para productos, packaging y señalización interna.",
     imagen: "etiquetas.jpg",
-    featured: false,
+    featured: true,
   },
   {
     nombre: "Revistas y catálogos",
     texto:
       "Revistas y catálogos impresos con acabado profesional para presentar tu oferta en detalle.",
     imagen: "revistas.jpg",
-    featured: false,
+    featured: true,
   },
 ];
 
