@@ -4,12 +4,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging gastronómico",
-  description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging gastronómico, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
+  title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
+  description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
   metadataBase: new URL("https://www.magentauruguay.com"),
   openGraph: {
-    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging gastronómico",
-    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging gastronómico, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
+    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
+    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
     url: "/",
     siteName: "Imprenta Magenta Paysandú",
     images: [
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging gastronómico",
-    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging gastronómico, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
+    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
+    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
     images: ["/og-magenta.jpg"],
   },
   icons: {

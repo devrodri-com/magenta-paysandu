@@ -1,6 +1,6 @@
 # Imprenta Magenta Paysandú - Website (MVP)
 
-Sitio web moderno y orientado a conversión desarrollado para **Imprenta Magenta Paysandú**, una imprenta con más de 15 años de trayectoria en impresión digital, offset, packaging gastronómico, papelería corporativa y productos personalizados.
+Sitio web moderno y orientado a conversión desarrollado para **Imprenta Magenta Paysandú**, una imprenta con más de 15 años de trayectoria en impresión digital, offset, packaging, papelería corporativa y productos personalizados.
 
 Este MVP incluye:
 

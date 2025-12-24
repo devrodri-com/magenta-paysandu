@@ -11,7 +11,7 @@ import ClientsStrip from "./components/ClientsStrip";
 
 export const metadata: Metadata = {
   title: "Imprenta Magenta Paysandú – Impresión digital y offset",
-  description: "Imprenta Magenta ofrece impresión digital, offset, packaging gastronómico, bolsas de papel y soluciones gráficas a medida en Paysandú.",
+  description: "Imprenta Magenta ofrece impresión digital, offset, packaging, bolsas de papel y soluciones gráficas a medida en Paysandú.",
 };
 
 export default function Home() {

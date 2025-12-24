@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProductCard } from "./ProductCard";
+import { PRODUCTS } from "@/data/products";
 
 export default function FeaturedProducts() {
   return (
@@ -16,44 +17,7 @@ export default function FeaturedProducts() {
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              nombre: "Bolsas de papel",
-              texto:
-                "Bolsas de papel personalizadas con tu logo, ideales para locales comerciales, eventos y packaging de marca.",
-              imagen: "bolsas.jpg",
-            },
-            {
-              nombre: "Packaging impreso",
-              texto:
-                "Cajas, bandejas, papel antigrasa y otros empaques impresos a medida para presentar y proteger tus productos.",
-              imagen: "packaging.jpg",
-            },
-            {
-              nombre: "Folletos y volantes",
-              texto:
-                "Folletos y volantes en distintos formatos para promociones, campañas y menús informativos.",
-              imagen: "folletos.jpg",
-            },
-            {
-              nombre: "Papelería corporativa",
-              texto:
-                "Libretas, tarjetas personales, hojas membretadas, sobres y anotadores que mantienen tu identidad de marca consistente.",
-              imagen: "papeleria.jpg",
-            },
-            {
-              nombre: "Revistas y catálogos",
-              texto:
-                "Revistas, catálogos y dípticos/trípticos con acabado profesional para mostrar tu oferta de productos y servicios.",
-              imagen: "revistas.jpg",
-            },
-            {
-              nombre: "Etiquetas y adhesivos",
-              texto:
-                "Etiquetas y adhesivos troquelados para productos, packaging y señalización interna.",
-              imagen: "etiquetas.jpg",
-            },
-          ].map((item) => (
+          {PRODUCTS.filter((item) => item.featured === true).map((item) => (
             <ProductCard
               key={item.nombre}
               title={item.nombre}

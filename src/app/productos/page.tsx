@@ -5,7 +5,7 @@ import { PRODUCTS } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Productos impresos – Bolsas, packaging, volantes y más | Imprenta Magenta",
-  description: "Bolsas de papel, packaging gastronómico, volantes, tarjetas personales, adhesivos, revistas y otras piezas impresas para tu marca.",
+  description: "Bolsas de papel, packaging, volantes, tarjetas personales, adhesivos, revistas y otras piezas impresas para tu marca.",
 };
 
 export default function ProductosPage() {
@@ -34,7 +34,7 @@ export default function ProductosPage() {
             </p>
             <ul className="mt-4 space-y-1 text-sm text-slate-800">
               <li>• Bolsas de papel</li>
-              <li>• Packaging gastronómico</li>
+              <li>• Packaging</li>
               <li>• Volantes y afiches</li>
             </ul>
           </article>

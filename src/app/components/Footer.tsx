@@ -25,7 +25,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-3 text-sm text-slate-300">
-              Impresión digital, offset y soluciones gráficas a medida. Packaging gastronómico,
+              Impresión digital, offset y soluciones gráficas a medida. Packaging,
               papelería corporativa y productos personalizados para tu marca.
             </p>
             <p className="mt-2 text-xs text-slate-500">

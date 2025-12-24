@@ -17,8 +17,7 @@ export default function ServiciosPage() {
           </h1>
           <p className="mt-4 text-sm text-slate-700 sm:text-base">
             En Imprenta Magenta combinamos impresión offset, impresión digital y plotter de
-            corte para ofrecer soluciones gráficas completas: desde packaging gastronómico
-            y bolsas de papel hasta afiches, tarjetas, libretas y más.
+            corte para ofrecer soluciones gráficas completas: desde packaging y bolsas de papel hasta afiches, tarjetas, libretas y más.
           </p>
         </header>
 
