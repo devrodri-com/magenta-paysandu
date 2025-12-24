@@ -173,10 +173,15 @@ export default function PresupuestoPage() {
                 {questions && (
                   <div className="mt-4 rounded-2xl bg-slate-900/70 p-4 text-xs text-slate-200 sm:text-sm">
                     <p className="font-semibold">Para este tipo de trabajo, contanos:</p>
-                    <ul className="mt-2 list-disc space-y-1 pl-4">
-                      {questions.map((q) => (
-                        <li key={q}>{q}</li>
-                      ))}
+                    <ul className="mt-2 list-none space-y-1 pl-0">
+                      {questions.map((q, index) => {
+                        const n = index + 1;
+                        return (
+                          <li key={q}>
+                            <span className="text-slate-500 font-medium">{n}.</span> {q}
+                          </li>
+                        );
+                      })}
                     </ul>
                     <p className="mt-2 text-[0.7rem] sm:text-xs text-slate-400">
                       Podés responder estas preguntas en el campo de mensaje de abajo.
