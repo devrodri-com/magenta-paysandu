@@ -16,7 +16,7 @@ export default function ServiciosPage() {
             Nuestros servicios
           </h1>
           <p className="mt-4 text-sm text-slate-700 sm:text-base">
-            En Imprenta Magenta combinamos impresión digital, impresión offset y plotter de
+            En Imprenta Magenta combinamos impresión offset, impresión digital y plotter de
             corte para ofrecer soluciones gráficas completas: desde packaging gastronómico
             y bolsas de papel hasta afiches, tarjetas, libretas y más.
           </p>
@@ -24,31 +24,6 @@ export default function ServiciosPage() {
 
         {/* Tecnologías principales */}
         <section className="mt-12 grid gap-10 md:grid-cols-3">
-          <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
-              Impresión digital
-            </h2>
-            <p className="mt-3 text-sm text-slate-700">
-              Ideal para tiradas cortas y trabajos urgentes. Gran velocidad y calidad de
-              impresión para piezas personalizadas.
-            </p>
-            <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-700">
-              <li>Tiradas cortas y personalizadas</li>
-              <li>Correcciones rápidas</li>
-              <li>Colores vibrantes y definición precisa</li>
-            </ul>
-            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
-              {/* Próximamente: foto de la impresora digital */}
-              <Image
-                src="/images/servicios/digital.jpg"
-                alt="Impresora digital de Imprenta Magenta"
-                width={400}
-                height={200}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </article>
-
           <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
               Impresión offset
@@ -67,6 +42,31 @@ export default function ServiciosPage() {
               <Image
                 src="/images/servicios/offset1.jpg"
                 alt="Máquina de impresión offset de Imprenta Magenta"
+                width={400}
+                height={200}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-magenta">
+              Impresión digital
+            </h2>
+            <p className="mt-3 text-sm text-slate-700">
+              Ideal para tiradas cortas y trabajos urgentes. Gran velocidad y calidad de
+              impresión para piezas personalizadas.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-700">
+              <li>Tiradas cortas y personalizadas</li>
+              <li>Correcciones rápidas</li>
+              <li>Colores vibrantes y definición precisa</li>
+            </ul>
+            <div className="mt-4 h-48 overflow-hidden rounded-xl bg-slate-200">
+              {/* Próximamente: foto de la impresora digital */}
+              <Image
+                src="/images/servicios/digital.jpg"
+                alt="Impresora digital de Imprenta Magenta"
                 width={400}
                 height={200}
                 className="h-full w-full object-cover"
@@ -111,7 +111,9 @@ export default function ServiciosPage() {
               negocio.
             </p>
             <ul className="mt-4 grid grid-cols-1 gap-1 text-sm text-slate-800 sm:grid-cols-2">
-              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Packaging (cajas, bandejas, etc.)</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Cajas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Bandejas</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Papel antigrasa</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Bolsas de papel</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Volantes</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Afiches</li>
@@ -121,6 +123,7 @@ export default function ServiciosPage() {
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Sobres</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Libretas</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Plastificado</li>
+              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Laminado</li>
             </ul>
           </article>
 
@@ -136,7 +139,6 @@ export default function ServiciosPage() {
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Hojas de facturación electrónica</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Blocks y anotadores</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Formularios</li>
-              <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Papel antigrasa</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Diplomas</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Entradas numeradas</li>
               <li className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-slate-300">Revistas</li>
@@ -152,8 +154,12 @@ export default function ServiciosPage() {
           </p>
           <p className="mt-2 max-w-xl">
             Muchos trabajos los desarrollamos a medida combinando distintas tecnologías y
-            terminaciones. Si tenés una idea específica o un proyecto especial, escribinos
-            y te ayudamos a definir el mejor formato de impresión.
+            terminaciones. El asesoramiento personalizado es clave: mucha gente no sabe exactamente
+            qué pedir, y nosotros los ayudamos a definirlo según sus necesidades.
+          </p>
+          <p className="mt-3 max-w-xl">
+            Si tenés una idea específica o un proyecto especial, escribinos y te ayudamos
+            a encontrar el mejor formato de impresión para tu caso.
           </p>
           <p className="mt-4 text-sm">
             ¿Querés presupuestar alguno de estos trabajos?{' '}

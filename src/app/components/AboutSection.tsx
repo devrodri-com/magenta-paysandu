@@ -13,7 +13,7 @@ export default function AboutSection() {
             Magenta es una imprenta moderna de Paysandú con más de 15 años de experiencia, especializada en impresión digital, offset y soluciones gráficas a medida. Combinamos tecnología, diseño y atención personalizada para que cada pieza impresa refleje lo mejor de tu marca.
           </p>
           <p className="mt-3 text-sm text-slate-700 sm:text-base">
-            Acompañamos a emprendedores, comercios y empresas de todo el país, brindando asesoramiento en diseño, elección de materiales, acabados y packaging gastronómico, uno de nuestros principales enfoques.
+            Acompañamos a emprendedores, comercios y empresas de todo el país, brindando asesoramiento en diseño, elección de materiales, acabados y packaging, uno de nuestros principales enfoques.
           </p>
           <div className="mt-8 space-y-4">
             <div className="flex items-start gap-3">

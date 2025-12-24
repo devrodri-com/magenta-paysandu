@@ -26,7 +26,7 @@ export default function FeaturedProducts() {
             {
               nombre: "Packaging impreso",
               texto:
-                "Cajas, bandejas y otros empaques impresos a medida para presentar y proteger tus productos.",
+                "Cajas, bandejas, papel antigrasa y otros empaques impresos a medida para presentar y proteger tus productos.",
               imagen: "packaging.jpg",
             },
             {
@@ -38,7 +38,7 @@ export default function FeaturedProducts() {
             {
               nombre: "Papelería corporativa",
               texto:
-                "Tarjetas personales, hojas membretadas, sobres y talonarios que mantienen tu identidad de marca consistente.",
+                "Libretas, tarjetas personales, hojas membretadas, sobres y anotadores que mantienen tu identidad de marca consistente.",
               imagen: "papeleria.jpg",
             },
             {

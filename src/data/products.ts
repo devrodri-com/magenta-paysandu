@@ -8,7 +8,7 @@ export const PRODUCTS = [
   {
     nombre: "Packaging impreso",
     texto:
-      "Cajas y bandejas para comida para llevar, diseñadas para soportar uso diario y mantener la presentación.",
+      "Cajas, bandejas, papel antigrasa y otros empaques para comida para llevar, diseñados para soportar uso diario y mantener la presentación.",
     imagen: "packaging.jpg",
   },
   {
