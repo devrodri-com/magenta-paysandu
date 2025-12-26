@@ -1,7 +1,7 @@
 // src/app/productos/page.tsx
 import type { Metadata } from "next";
-import { ProductCard } from "../components/ProductCard";
-import { PRODUCTS } from "@/data/products";
+import Link from "next/link";
+import { WHATSAPP_URL_TEXT } from "@/data/contact";
 
 export const metadata: Metadata = {
   title: "Productos impresos – Bolsas, packaging, volantes y más | Imprenta Magenta",
@@ -68,15 +68,29 @@ export default function ProductosPage() {
           </article>
         </section>
 
-        <section className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PRODUCTS.map((item) => (
-            <ProductCard
-              key={item.nombre}
-              title={item.nombre}
-              description={item.texto}
-              imageSrc={`/images/productos/${item.imagen}`}
-            />
-          ))}
+        <section className="mt-12 rounded-2xl bg-slate-50 p-8 text-center">
+          <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+            ¿No ves lo que buscás?
+          </h2>
+          <p className="mt-3 text-sm text-slate-700 sm:text-base max-w-2xl mx-auto">
+            Hacemos trabajos a medida y te asesoramos para elegir materiales y terminaciones según tu necesidad.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={WHATSAPP_URL_TEXT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-brand-rosa transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta/70"
+            >
+              Escribinos por WhatsApp
+            </a>
+            <Link
+              href="/presupuesto"
+              className="rounded-full border border-slate-300/40 px-6 py-3 text-sm font-semibold text-slate-700 hover:border-brand-rosaClaro hover:text-brand-rosaClaro transition"
+            >
+              Pedir presupuesto
+            </Link>
+          </div>
         </section>
 
         <section className="mt-12 rounded-2xl bg-slate-50 p-6 text-sm text-slate-700">

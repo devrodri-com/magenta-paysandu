@@ -23,6 +23,9 @@ const CLIENT_LOGOS = [
 ];
 
 export default function ClientsStrip() {
+  // Duplicar el array para crear loop continuo sin salto
+  const loopLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
+
   return (
     <section className="bg-slate-800 border-t border-slate-800 py-10">
       <div className="mx-auto max-w-6xl px-4">
@@ -31,8 +34,8 @@ export default function ClientsStrip() {
         </p>
 
         <div className="mt-6 overflow-hidden">
-          <div className="clients-marquee flex items-center gap-10">
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, index) => (
+          <div className="clients-marquee flex items-center gap-10 w-max">
+            {loopLogos.map((logo, index) => (
               <div
                 key={`${logo.src}-${index}`}
                 className="flex min-w-[120px] justify-center opacity-80 bg-[#a2a2a2] rounded-xl p-3"
