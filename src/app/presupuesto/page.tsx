@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { LuChevronDown } from "react-icons/lu";
 import { QUESTION_SETS } from "@/data/questionSets";
-import { WHATSAPP_URL_TEXT } from "@/data/contact";
+import { WHATSAPP_URL_TEXT, MAILTO_PRESUPUESTO } from "@/data/contact";
 
 type JobTypeOption = {
   value: string;
@@ -123,7 +123,7 @@ export default function PresupuestoPage() {
                 Escribir por WhatsApp
               </a>
               <a
-                href="mailto:info@magentauruguay.com"
+                href={MAILTO_PRESUPUESTO}
                 className="rounded-full border border-slate-300/40 px-6 py-3 text-sm font-semibold text-slate-100 hover:border-brand-rosaClaro hover:text-brand-rosaClaro transition"
               >
                 Enviar un email
