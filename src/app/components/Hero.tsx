@@ -41,7 +41,8 @@ export default function Hero() {
           alt="15 años de experiencia"
           width={120}
           height={120}
-          className="pointer-events-none select-none md:hidden absolute top-44 right-2 opacity-10 z-0 w-24 h-auto"        />
+          className="pointer-events-none select-none md:hidden absolute right-2 top-[clamp(10rem,32vh,14rem)] opacity-10 z-0 w-20 h-auto sm:w-24"
+        />
 
         {/* Sello 15 años - desktop */}
         <Image
@@ -55,4 +56,3 @@ export default function Hero() {
     </section>
   );
 }
-
