@@ -15,13 +15,11 @@ export type Testimonial = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: "ejemplo",
-    businessName: "Nombre del negocio",
-    category: "Rubro del comercio",
-    text: "Acá se va a mostrar la experiencia real de un cliente de Imprenta Magenta. El testimonio surge de un mensaje o audio del cliente, editado solo para claridad, donde cuenta qué trabajo se realizó y cómo fue trabajar con Magenta.",
-    logo: "/images/testimonials/placeholder2.png",
-    instagram: "https://instagram.com/negocio",
-    website: "https://www.negocio.com",
+    id: "pio-pio",
+    businessName: "Pio Pio",
+    category: "Gastronomía",
+    text: "Los impresos son de excelente calidad y las entregas siempre llegan en tiempo y forma. Además, se adaptan a las necesidades de cada empresa. Los súper recomendamos.",
+    logo: "/images/testimonials/pio-pio.svg",
   },
 ];
 
