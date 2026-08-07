@@ -1,4 +1,4 @@
-export const QUESTION_SETS: Record<string, string[]> = {
+export const QUESTION_SETS = {
   libretas: [
     "¿Cuántas libretas necesitás? (cada libreta trae 50 documentos)",
     "¿Cuántas tintas? (por defecto, 1 tinta negra)",
@@ -56,5 +56,4 @@ export const QUESTION_SETS: Record<string, string[]> = {
     "¿Los necesitás entregados en planchas o individuales?",
     "¿Adhesivo transparente o semibrillo?",
   ],
-};
-
+} as const;
