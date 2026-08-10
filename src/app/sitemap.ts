@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://www.magentauruguay.com/presupuesto",
     },
     {
+      url: "https://www.magentauruguay.com/contacto",
+    },
+    {
       url: "https://www.magentauruguay.com/sobre-nosotros",
     },
     {
