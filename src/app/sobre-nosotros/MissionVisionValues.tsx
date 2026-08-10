@@ -102,16 +102,28 @@ export default function MissionVisionValues() {
       className="border-t border-slate-100 bg-pink-50/60"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 lg:py-20">
-        <h2
-          id="pilares-heading"
-          className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl"
-        >
-          Nuestros pilares,
-          <br />
-          <span className={MAGENTA_TEXT_AA}>lo que nos define</span>
-        </h2>
+        {/*
+          Desde lg el título entra en una línea y la fila se completa con una
+          regla editorial que ocupa el resto del riel. Por debajo, los dos
+          tramos vuelven a ser bloques y la regla desaparece.
+        */}
+        <div className="lg:flex lg:items-center lg:gap-8">
+          <h2
+            id="pilares-heading"
+            className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:whitespace-nowrap lg:text-[2.5rem] xl:text-5xl"
+          >
+            <span className="block lg:inline">Nuestros pilares:</span>{" "}
+            <span className={`block lg:inline ${MAGENTA_TEXT_AA}`}>
+              lo que nos define
+            </span>
+          </h2>
+          <span
+            aria-hidden="true"
+            className="hidden h-px flex-1 bg-gradient-to-r from-brand-magenta/40 from-0% via-slate-300/70 via-12% to-transparent lg:block"
+          />
+        </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-7 lg:mt-12 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-7 lg:mt-16 lg:grid-cols-3 lg:gap-8">
           <article className={CARD}>
             <PillarHeader icon={LuTarget} title="Misión" />
             <p className={CARD_BODY}>{MISSION}</p>
