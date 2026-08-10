@@ -93,6 +93,9 @@ export default function Footer() {
               <Link href="/sobre-nosotros" className={`inline-flex min-h-[44px] items-center rounded hover:text-brand-rosaClaro ${FOCUS_RING}`}>
                 Nosotros
               </Link>
+              <Link href="/contacto" className={`inline-flex min-h-[44px] items-center rounded hover:text-brand-rosaClaro ${FOCUS_RING}`}>
+                Contacto
+              </Link>
               <Link href="/testimonios" className={`inline-flex min-h-[44px] items-center rounded hover:text-brand-rosaClaro ${FOCUS_RING}`}>
                 Testimonios
               </Link>
