@@ -1,73 +1,112 @@
 import Image from "next/image";
-import { LuCheck } from "react-icons/lu";
+import Link from "next/link";
+import { LuArrowRight, LuClock, LuMapPin } from "react-icons/lu";
+import { ABOUT_CLAIM, ABOUT_SUMMARY } from "@/data/about";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_HOURS,
+  MAPS_LINK_URL,
+  WHATSAPP_URL_TEXT,
+} from "@/data/contact";
 
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";
+
+/** Magenta oscurecido ~15%: #e6007e no alcanza AA 4,5:1 en texto chico sobre fondos claros. */
+const MAGENTA_TEXT_AA = "text-[#c3006b]";
+
+/**
+ * Resumen institucional de la Home: claim + historia condensada + CTA a
+ * /sobre-nosotros. La versión completa (pilares, ubicación, mapa) vive en la
+ * página interna; acá solo una línea compacta de datos prácticos.
+ */
 export default function AboutSection() {
   return (
-    <section className="bg-pink-50 py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2">
+    <section
+      aria-labelledby="nosotros-heading"
+      className="border-t border-slate-100 bg-pink-50/40 py-16 sm:py-20"
+    >
+      {/*
+        45/55 texto|foto en desktop. La fila de datos prácticos es un tercer
+        hijo de la grilla (col-span-2): así en mobile el flujo del DOM da el
+        orden pedido —texto, CTA, foto y recién después los datos—.
+      */}
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:items-center lg:gap-x-14">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Sobre Imprenta Magenta
+          <p
+            className={`text-xs font-semibold uppercase tracking-widest ${MAGENTA_TEXT_AA}`}
+          >
+            Nosotros
+          </p>
+          <h2
+            id="nosotros-heading"
+            className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+          >
+            {ABOUT_CLAIM}
           </h2>
-          <p className="mt-4 text-sm text-slate-700 sm:text-base">
-            Magenta es una imprenta moderna de Paysandú con más de 15 años de experiencia, especializada en impresión digital, offset y soluciones gráficas a medida. Combinamos tecnología, diseño y atención personalizada para que cada pieza impresa refleje lo mejor de tu marca.
-          </p>
-          <p className="mt-3 text-sm text-slate-700 sm:text-base">
-            Acompañamos a emprendedores, comercios y empresas de todo el país, brindando asesoramiento en diseño, elección de materiales, acabados y packaging, uno de nuestros principales enfoques.
-          </p>
-          <div className="mt-8 space-y-4">
-            <div className="flex items-start gap-3">
-              <LuCheck className="h-5 w-5 text-brand-magenta" />
-              <p className="text-sm text-slate-700">
-                Atención personalizada en cada proyecto.
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <LuCheck className="h-5 w-5 text-brand-magenta" />
-              <p className="text-sm text-slate-700">
-                Calidad profesional en materiales y terminaciones.
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <LuCheck className="h-5 w-5 text-brand-magenta" />
-              <p className="text-sm text-slate-700">
-                Más de 15 años de experiencia en el sector.
-              </p>
-            </div>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+            {ABOUT_SUMMARY.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
+          <Link
+            href="/sobre-nosotros"
+            className={`group mt-6 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg text-sm font-semibold underline-offset-4 transition-colors hover:underline ${MAGENTA_TEXT_AA} ${FOCUS_RING}`}
+          >
+            Conocé más sobre Magenta
+            <LuArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+            />
+          </Link>
         </div>
 
-        <div className="rounded-2xl border border-pink-100 bg-white p-4 shadow-sm">
-          <p className="text-sm font-semibold text-slate-900">¿Dónde estamos?</p>
-          <p className="mt-1 text-sm text-slate-700">
-            Proyectada 46 Nte. 987, 60000 Paysandú, Uruguay.
-          </p>
-          <p className="mt-1 text-xs text-slate-600 sm:text-sm">
-            Lunes a viernes, 9:00 a 17:00 h · WhatsApp: 098 273 040
-          </p>
+        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
+          <Image
+            src="/images/hero-image.jpg"
+            alt="Fachada del local de Imprenta Magenta en Paysandú, con el cartel de la marca sobre la entrada."
+            fill
+            sizes="(min-width: 1152px) 620px, (min-width: 1024px) 55vw, 100vw"
+            className="object-cover"
+          />
+        </div>
 
-          <div className="mt-4 overflow-hidden rounded-xl">
-            <Image
-              src="/images/hero-image.jpg"
-              alt="Fachada de Imprenta Magenta en Paysandú"
-              width={800}
-              height={500}
-              className="h-40 w-full object-cover"
+        {/* Datos prácticos compactos: una sola línea envolvente, sin cards. */}
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-1 border-t border-slate-200 pt-5 lg:col-span-2">
+          <p className="inline-flex min-h-[44px] items-center gap-2 text-sm text-slate-600">
+            <LuMapPin
+              aria-hidden="true"
+              className="h-4 w-4 shrink-0 text-brand-magenta"
             />
-          </div>
-
-          <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
-            Mapa de ubicación
+            {CONTACT_ADDRESS}, Paysandú
           </p>
-          <div className="mt-4 h-40 w-full overflow-hidden rounded-xl">
-            <iframe
-              src="https://www.google.com/maps?q=Proyectada+46+Nte.+987,+60000+Paysand%C3%BA,+Uruguay&output=embed"
-              className="h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
+          <p className="inline-flex min-h-[44px] items-center gap-2 text-sm text-slate-600">
+            <LuClock
+              aria-hidden="true"
+              className="h-4 w-4 shrink-0 text-brand-magenta"
             />
-          </div>
+            {CONTACT_HOURS}
+          </p>
+          <a
+            href={MAPS_LINK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex min-h-[44px] items-center rounded-lg text-sm font-semibold text-slate-900 underline-offset-4 transition-colors hover:text-[#c3006b] hover:underline ${FOCUS_RING}`}
+          >
+            Cómo llegar
+          </a>
+          <a
+            href={WHATSAPP_URL_TEXT}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group inline-flex min-h-[44px] items-center gap-1.5 rounded-lg text-sm font-semibold text-slate-900 underline-offset-4 transition-colors hover:text-[#c3006b] hover:underline ${FOCUS_RING}`}
+          >
+            Escribinos por WhatsApp
+            <LuArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+            />
+          </a>
         </div>
       </div>
     </section>
