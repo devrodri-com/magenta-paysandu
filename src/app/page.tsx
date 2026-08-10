@@ -1,9 +1,9 @@
 // src/app/page.tsx
-import Image from "next/image";
 import type { Metadata } from "next";
 import Hero from "./components/Hero";
 import BenefitsBar from "./components/BenefitsBar";
 import FeaturedProducts from "./components/FeaturedProducts";
+import ServicesOverview from "./components/ServicesOverview";
 import AboutSection from "./components/AboutSection";
 import Testimonials from "./components/Testimonials";
 import QuoteCTA from "./components/QuoteCTA";
@@ -25,6 +25,9 @@ export default function Home() {
 
       {/* PRODUCTOS / CATEGORÍAS PRINCIPALES */}
       <FeaturedProducts />
+
+      {/* SERVICIOS */}
+      <ServicesOverview />
 
       {/* QUIÉNES SOMOS + MAPA */}
       <AboutSection />
