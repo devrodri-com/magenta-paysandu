@@ -462,7 +462,7 @@ export function QuoteForm() {
       <button
         type="submit"
         disabled={pending || !formStartedAt}
-        className="w-full rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-rosaClaro hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-brand-magenta px-7 text-sm font-semibold text-white transition hover:bg-[#c3006b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Enviando…" : "Enviar consulta"}
       </button>

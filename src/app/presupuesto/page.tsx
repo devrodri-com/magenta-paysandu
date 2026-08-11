@@ -2,7 +2,7 @@ import { MAILTO_PRESUPUESTO, WHATSAPP_URL_TEXT } from "@/data/contact";
 import { QuoteForm } from "./QuoteForm";
 
 const actionLinkClassName =
-  "rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900";
+  "inline-flex min-h-[44px] items-center justify-center rounded-full px-7 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900";
 
 export default function PresupuestoPage() {
   return (
@@ -23,7 +23,7 @@ export default function PresupuestoPage() {
               href={WHATSAPP_URL_TEXT}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${actionLinkClassName} bg-brand-magenta text-white shadow-lg hover:bg-brand-rosaClaro hover:text-slate-950`}
+              className={`${actionLinkClassName} bg-brand-magenta text-white shadow-lg hover:bg-[#c3006b]`}
             >
               Escribir por WhatsApp
             </a>
