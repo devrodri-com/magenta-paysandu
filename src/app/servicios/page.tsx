@@ -119,9 +119,10 @@ export default function ServiciosPage() {
           >
             Capacidad técnica
           </p>
+          {/* text-balance: en 320/390 evita que "trabajo" caiga sola en la última línea. */}
           <h2
             id="capacidad-tecnica-heading"
-            className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+            className="mt-2 text-balance text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
           >
             Tecnología para cada tipo de trabajo
           </h2>
@@ -149,11 +150,10 @@ export default function ServiciosPage() {
                 }
               >
                 {/*
-                  Los assets son 800×600 con la máquina completa sobre fondo
-                  negro: el contenedor 4:3 + object-cover muestra la foto entera
-                  sin recorte, y el bg-black cubre cualquier borde de redondeo.
+                  Los assets 2026 son 1200×900 (4:3 exacto): el contenedor 4:3
+                  + object-cover muestra la escena completa sin recorte.
                 */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
                   <Image
                     src={tech.image}
                     alt={tech.imageAlt}
@@ -165,9 +165,6 @@ export default function ServiciosPage() {
                 <h3 className="mt-4 text-base font-semibold text-slate-900 sm:text-lg">
                   {tech.name}
                 </h3>
-                <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-slate-500">
-                  {tech.machine}
-                </p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {tech.copy}
                 </p>

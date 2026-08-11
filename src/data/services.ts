@@ -49,11 +49,12 @@ export const SERVICE_PILLARS: ServicePillar[] = [
 /**
  * Tecnologías de impresión: respaldo técnico secundario de /servicios.
  * El copy explica cuándo conviene cada proceso, en lenguaje no técnico.
+ * Las imágenes 2026 son generadas (no fotografías de las máquinas del
+ * taller), por eso no se etiquetan con marcas ni modelos concretos.
  */
 export type PrintingTechnology = {
   id: string;
   name: string;
-  machine: string;
   copy: string;
   image: string;
   imageAlt: string;
@@ -63,25 +64,22 @@ export const PRINTING_TECHNOLOGIES: PrintingTechnology[] = [
   {
     id: "offset",
     name: "Impresión offset",
-    machine: "Heidelberg Speedmaster",
-    copy: "La mejor opción para grandes cantidades: menor costo por unidad y color consistente en toda la tirada.",
-    image: "/images/servicios/heidelberg-speedmaster.jpg",
-    imageAlt: "Máquina de impresión offset Heidelberg Speedmaster",
+    copy: "Ideal para grandes cantidades y trabajos que requieren consistencia de color en toda la tirada.",
+    image: "/images/servicios/2026/impresion-offset.webp",
+    imageAlt: "Prensa industrial de impresión offset en taller gráfico",
   },
   {
     id: "digital",
     name: "Impresión digital",
-    machine: "Konica Minolta AccurioPrint C3070L",
-    copy: "Ideal para tiradas cortas y trabajos con plazos ajustados: rapidez, colores vibrantes y definición precisa.",
-    image: "/images/servicios/konica-c3070l.jpg",
-    imageAlt: "Impresora digital Konica Minolta AccurioPrint C3070L",
+    copy: "Ideal para tiradas cortas y piezas que requieren flexibilidad o personalización.",
+    image: "/images/servicios/2026/impresion-digital.webp",
+    imageAlt: "Prensa digital de producción en taller gráfico",
   },
   {
     id: "plotter",
     name: "Plotter de corte",
-    machine: "Toyocut",
-    copy: "Corte rápido y preciso para adhesivos y etiquetas con formas especiales.",
-    image: "/images/servicios/toyocut.jpg",
-    imageAlt: "Plotter de corte Toyocut",
+    copy: "Ideal para adhesivos, etiquetas y piezas con formas especiales.",
+    image: "/images/servicios/2026/plotter-corte.webp",
+    imageAlt: "Plotter profesional de corte trabajando con adhesivos en taller gráfico",
   },
 ];
