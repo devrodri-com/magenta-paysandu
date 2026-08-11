@@ -13,15 +13,14 @@ import { QUESTION_SETS } from "@/data/questionSets";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
 import {
   INITIAL_QUOTE_FORM_STATE,
-  JOB_TYPE_OPTIONS,
   QUOTE_FIELD_LIMITS,
-  isQuoteJobType,
   toPublicQuoteFailure,
   type QuoteFieldErrors,
   type QuoteFieldName,
   type QuoteJobType,
   type QuoteSubmissionStatus,
 } from "@/lib/quote-request";
+import { JobTypeSelect } from "./JobTypeSelect";
 import { submitQuoteRequest } from "./actions";
 
 const controlClassName =
@@ -361,29 +360,16 @@ export function QuoteForm() {
           Tipo de trabajo
           <RequiredMark />
         </label>
-        <select
-          id="jobType"
-          name="jobType"
+        <JobTypeSelect
           value={values.jobType}
-          required
-          aria-invalid={Boolean(fieldErrors?.jobType)}
-          aria-describedby={describedBy(
+          onChange={(next) => updateValue("jobType", next)}
+          disabled={pending}
+          invalid={Boolean(fieldErrors?.jobType)}
+          describedBy={describedBy(
             "jobType-hint",
             fieldErrors?.jobType && "jobType-error",
           )}
-          className={controlClassName}
-          onChange={(event) => {
-            const value = event.target.value;
-            updateValue("jobType", isQuoteJobType(value) ? value : "");
-          }}
-        >
-          <option value="">Elegí una opción</option>
-          {JOB_TYPE_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        />
         <p id="jobType-hint" className="mt-1.5 text-xs text-slate-300">
           La selección determina las preguntas que aparecen a continuación.
         </p>
