@@ -24,16 +24,121 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Marquee animation for client logos strip */
-.clients-marquee {
-  animation: clients-marquee 40s linear infinite;
+/*
+ * Marquee de logos de clientes (ClientsStrip).
+ *
+ * El track contiene dos grupos idénticos (el segundo aria-hidden). Cada grupo
+ * incluye su propio gap de empalme como padding-right igual al gap interno,
+ * así un grupo mide exactamente el 50% del track y translateX(-50%) reinicia
+ * en el mismo punto geométrico: el logo 18 entra completo antes de volver al 1,
+ * sin salto ni espacio muerto.
+ */
+.clients-marquee-track {
+  animation: clients-marquee 56s linear infinite;
+}
+
+/* El botón pausa congela en el lugar (animation-play-state, no reinicio). */
+.clients-marquee-track[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+/*
+ * Pausa en hover como mejora progresiva; el control real es el botón.
+ * Solo con hover real: en touch el :hover queda pegado tras un tap y
+ * congelaría la cinta desincronizada del botón.
+ */
+@media (hover: hover) {
+  .clients-marquee-viewport:hover .clients-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Fundido sutil en los bordes para que la cinta no corte los logos en seco. */
+.clients-marquee-viewport {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 2.5rem,
+    black calc(100% - 2.5rem),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 2.5rem,
+    black calc(100% - 2.5rem),
+    transparent
+  );
 }
 
 @keyframes clients-marquee {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
+  }
+}
+
+/*
+ * Movimiento reducido, resuelto en CSS puro (sin depender de JavaScript):
+ * sin animación, la copia duplicada y el control de pausa desaparecen y el
+ * único grupo visible pasa a grilla estática.
+ */
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * display: block saca al grupo del contexto flex del track: el <ul> deja de
+   * medir max-content (shrink-0) y puede repartirse en columnas.
+   */
+  .clients-marquee-track {
+    display: block;
+    width: auto;
+    animation: none;
+  }
+
+  .clients-marquee-viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
+    /* Sin control de pausa visible, el aire lo da la sección, no el botón. */
+    margin-top: 2.5rem;
+  }
+
+  /*
+   * Grilla estática de columnas fijas: 3×6, 6×3 y 9×2. Los 18 logos son
+   * divisibles por los tres escalones, así que ninguna fila queda huérfana.
+   */
+  .clients-marquee-group {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 2rem;
+    padding-right: 0;
+  }
+
+  /* Red de seguridad: object-contain evita deformación si un cell aprieta. */
+  .clients-marquee-group img {
+    max-width: 100%;
+  }
+
+  .clients-marquee-duplicate,
+  .clients-marquee-control {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 640px) {
+  .clients-marquee-group {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 1280px) {
+  .clients-marquee-group {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 2.5rem;
   }
 }
