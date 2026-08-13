@@ -7,6 +7,7 @@ import {
   LuTruck,
   LuAward,
 } from "react-icons/lu";
+import { SEO_CONFIG } from "@/config/seo";
 
 const BENEFITS: { Icon: IconType; title: string; detail: string }[] = [
   {
@@ -31,12 +32,12 @@ const BENEFITS: { Icon: IconType; title: string; detail: string }[] = [
   },
   {
     Icon: LuTruck,
-    title: "Reparto sin costo",
-    detail: "Sin costo adicional en Paysandú.",
+    title: "Reparto en Paysandú",
+    detail: "Semanal sin costo, según producción.",
   },
   {
     Icon: LuAward,
-    title: "Más de 16 años",
+    title: SEO_CONFIG.publicFoundingCopy,
     detail: "Acompañando a empresas y emprendedores.",
   },
 ];

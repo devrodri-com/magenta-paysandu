@@ -1,16 +1,12 @@
 // src/app/testimonios/page.tsx
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
+import { metadataForPath } from "@/config/seo";
 import TestimonialCard from "../components/TestimonialCard";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
 
-export const metadata: Metadata = {
-  title: "Testimonios de clientes – Imprenta Magenta Paysandú",
-  description:
-    "Experiencias de empresas y comercios que eligieron a Magenta para sus trabajos impresos en Paysandú.",
-};
+export const metadata = metadataForPath("/testimonios");
 
 /** Variante para la banda oscura final: el offset del ring debe ser oscuro. */
 const FOCUS_RING_DARK =

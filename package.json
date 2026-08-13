@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:seo": "node --test tests/*.test.mjs",
+    "validate:seo-http": "node scripts/validate-seo-http.mjs"
   },
   "dependencies": {
     "next": "16.2.11",

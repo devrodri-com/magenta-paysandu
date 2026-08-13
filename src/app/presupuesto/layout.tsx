@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
+import { metadataForPath } from "@/config/seo";
 
-export const metadata: Metadata = {
-  title: "Pedir presupuesto – Imprenta Magenta Paysandú",
-  description: "Completá el formulario de presupuesto para recibir una cotización personalizada de impresión digital, offset, packaging, bolsas y otros trabajos.",
-};
+export const metadata = metadataForPath("/presupuesto");
 
 export default function PresupuestoLayout({
   children,
@@ -12,4 +9,3 @@ export default function PresupuestoLayout({
 }) {
   return <>{children}</>;
 }
-

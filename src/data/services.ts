@@ -1,4 +1,4 @@
-// src/data/services.ts
+import { SEO_CONFIG } from "@/config/seo";
 
 /**
  * Titular y frase de cierre compartidos por la Home (ServicesOverview) y
@@ -36,8 +36,8 @@ export const SERVICE_PILLARS: ServicePillar[] = [
   },
   {
     id: "reparto",
-    title: "Reparto sin costo",
-    copy: "Entregamos en Paysandú sin costo adicional. También entregamos en otras zonas.",
+    title: "Reparto y envíos",
+    copy: `${SEO_CONFIG.delivery.local} ${SEO_CONFIG.delivery.national}`,
   },
   {
     id: "integral",

@@ -1,8 +1,8 @@
 // src/app/servicios/page.tsx
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
+import { metadataForPath } from "@/config/seo";
 import {
   SERVICE_PILLARS,
   PRINTING_TECHNOLOGIES,
@@ -11,12 +11,7 @@ import {
 } from "@/data/services";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
 
-export const metadata: Metadata = {
-  title:
-    "Servicios – Asesoramiento, diseño e impresión offset y digital | Imprenta Magenta",
-  description:
-    "Te asesoramos y diseñamos con vos: impresión offset, impresión digital y plotter de corte para resolver trabajos a medida en Paysandú, desde pocas unidades hasta grandes tiradas.",
-};
+export const metadata = metadataForPath("/servicios");
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";

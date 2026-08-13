@@ -1,5 +1,4 @@
 // src/app/sobre-nosotros/page.tsx
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,6 +8,7 @@ import {
   LuMapPin,
   LuPhone,
 } from "react-icons/lu";
+import { metadataForPath } from "@/config/seo";
 import { ABOUT_CLAIM, ABOUT_STORY } from "@/data/about";
 import MissionVisionValues from "./MissionVisionValues";
 import {
@@ -23,11 +23,7 @@ import {
   WHATSAPP_URL_TEXT,
 } from "@/data/contact";
 
-export const metadata: Metadata = {
-  title: `Sobre nosotros – ${ABOUT_CLAIM} | Imprenta Magenta`,
-  description:
-    "Conocé la historia de Imprenta Magenta: más de 16 años acompañando a empresas, comercios y emprendedores de Paysandú con calidad, atención personalizada e inversión constante en tecnología.",
-};
+export const metadata = metadataForPath("/sobre-nosotros");
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";

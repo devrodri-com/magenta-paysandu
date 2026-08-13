@@ -1,24 +1,67 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import {
+  SEO_CONFIG,
+  canonicalUrl,
+  robotsForPath,
+} from "@/config/seo";
 import { PORTFOLIO_ITEMS } from "@/data/portfolio";
 
 /*
  * Con el dataset vacío la ruta responde 404, así que el title real de Portfolio
- * sería engañoso: devolvemos metadata neutral. El noindex lo aporta notFound(),
- * no hace falta declararlo acá.
+ * sería engañoso: devolvemos metadata neutral y noindex explícito.
  */
 export function generateMetadata(): Metadata {
   if (PORTFOLIO_ITEMS.length === 0) {
     return {
-      title: "Página no encontrada | Imprenta Magenta Paysandú",
-      description: "La página que buscás no está disponible.",
+      title: "Página no encontrada",
+      description: "La página que buscás no existe en el sitio de Magenta.",
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
+  const title = "Portfolio de trabajos";
+  const description =
+    "Galería de trabajos realizados: bolsas personalizadas, packaging, etiquetas, afiches y otras piezas impresas para clientes reales.";
+  const canonical = canonicalUrl("/portfolio");
+  const imageUrl = new URL(
+    SEO_CONFIG.openGraphImage.path,
+    SEO_CONFIG.canonicalOrigin,
+  ).toString();
+
   return {
-    title: "Portfolio de trabajos – Imprenta Magenta Paysandú",
-    description: "Galería de trabajos realizados: bolsas personalizadas, packaging, etiquetas, afiches y otras piezas impresas para clientes reales.",
+    title,
+    description,
+    alternates: { canonical },
+    robots: robotsForPath("/portfolio", undefined, {
+      portfolioHasContent: true,
+    }),
+    openGraph: {
+      type: "website",
+      locale: SEO_CONFIG.locale,
+      siteName: SEO_CONFIG.siteName,
+      url: canonical,
+      title: `${title} | ${SEO_CONFIG.titleSuffix}`,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: SEO_CONFIG.openGraphImage.width,
+          height: SEO_CONFIG.openGraphImage.height,
+          alt: SEO_CONFIG.openGraphImage.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${SEO_CONFIG.titleSuffix}`,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
