@@ -1,43 +1,39 @@
 import type { MetadataRoute } from "next";
+import {
+  BUILD_INDEXING_ENABLED,
+  FUTURE_INDEXABLE_ROUTES,
+  PORTFOLIO_EDITORIALLY_APPROVED,
+  canonicalUrl,
+  isPortfolioBuildIndexable,
+} from "@/config/seo";
 import { PORTFOLIO_ITEMS } from "@/data/portfolio";
-
-const BASE_URL = "https://www.magentauruguay.com";
 
 // No incluimos lastModified porque no es requerido y usar new Date() en cada build genera fechas cambiantes
 // sin cambios reales, lo cual puede confundir a los motores de búsqueda.
-//
-// /portfolio sólo entra al sitemap cuando el dataset tiene trabajos reales: con
-// PORTFOLIO_ITEMS vacío la ruta responde 404, así que publicarla acá sería
-// declarar una URL no indexable.
+export function buildSitemap(
+  buildIndexingEnabled = BUILD_INDEXING_ENABLED,
+  portfolioHasContent = PORTFOLIO_ITEMS.length > 0,
+  portfolioEditoriallyApproved = PORTFOLIO_EDITORIALLY_APPROVED,
+): MetadataRoute.Sitemap {
+  if (!buildIndexingEnabled) return [];
+
+  const staticRoutes = FUTURE_INDEXABLE_ROUTES.map((pathname) => ({
+    url: canonicalUrl(pathname),
+  }));
+
+  if (
+    !isPortfolioBuildIndexable(
+      portfolioHasContent,
+      buildIndexingEnabled,
+      portfolioEditoriallyApproved,
+    )
+  ) {
+    return staticRoutes;
+  }
+
+  return [...staticRoutes, { url: canonicalUrl("/portfolio") }];
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${BASE_URL}/`,
-    },
-    {
-      url: `${BASE_URL}/servicios`,
-    },
-    {
-      url: `${BASE_URL}/productos`,
-    },
-    {
-      url: `${BASE_URL}/presupuesto`,
-    },
-    {
-      url: `${BASE_URL}/contacto`,
-    },
-    {
-      url: `${BASE_URL}/sobre-nosotros`,
-    },
-    {
-      url: `${BASE_URL}/testimonios`,
-    },
-    ...(PORTFOLIO_ITEMS.length > 0
-      ? [
-          {
-            url: `${BASE_URL}/portfolio`,
-          },
-        ]
-      : []),
-  ];
+  return buildSitemap();
 }

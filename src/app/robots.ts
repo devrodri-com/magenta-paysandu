@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BUILD_INDEXING_ENABLED, SEO_CONFIG } from "@/config/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,7 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.magentauruguay.com/sitemap.xml",
+    ...(BUILD_INDEXING_ENABLED
+      ? { sitemap: `${SEO_CONFIG.canonicalOrigin}/sitemap.xml` }
+      : {}),
   };
 }
-
