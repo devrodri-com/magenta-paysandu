@@ -1,13 +1,13 @@
 # Imprenta Magenta Paysandú - Website (MVP)
 
-Sitio web moderno y orientado a conversión desarrollado para **Imprenta Magenta Paysandú**, una imprenta con más de 15 años de trayectoria en impresión digital, offset, packaging, papelería corporativa y productos personalizados.
+Sitio web moderno y orientado a conversión desarrollado para **Imprenta Magenta Paysandú**, imprenta activa desde 2010 en impresión digital, offset, packaging, papelería corporativa y productos personalizados.
 
 Este MVP incluye:
 
 - Landing page con CTA principal a WhatsApp + Presupuesto
 - Catálogo visual de productos principales
 - Página completa de servicios (digital, offset, plotter)
-- Formulario inteligente de presupuesto según tipo de trabajo
+- Formulario funcional de presupuesto con validación, Turnstile y entrega por email
 - Secciones institucionales: Sobre nosotros, Portfolio, Testimonios
 - SEO técnico completo (metadata, OG Image, favicon, sitemap, robots)
 - Diseño responsive premium, optimizado para Core Web Vitals
@@ -28,10 +28,10 @@ Este MVP incluye:
 
 ## 🌐 Sitio online
 
-- **Demo (Vercel):** https://magenta-paysandu-m5in.vercel.app
-- **Dominio real:** https://www.magentauruguay.com
+- **Preview no canónico:** https://magenta-paysandu-m5in.vercel.app
+- **Host canónico oficial:** https://www.magentauruguay.com
 
-> El dominio será apuntado al deploy final de Vercel.
+> Los previews permanecen fuera de indexación y no redirigen a producción.
 
 ---
 
@@ -43,7 +43,14 @@ Este MVP incluye:
 - Sitemap automático (`/sitemap.xml`)
 - Robots.txt auto-generado
 - `metadataBase` con dominio real
+- Indexación deshabilitada por defecto mediante `SEO_INDEXING_ENABLED=false`
+- `/presupuesto` preparado para entrar al sitemap únicamente durante el cutover
+- `/testimonios` accesible y noindex; `/portfolio` devuelve 404 mientras no tenga contenido aprobado
 - Diseño mobile-first y lightweight
+
+`SEO_INDEXING_ENABLED` es server-only y sólo el literal `true`, junto con
+`VERCEL_ENV=production`, habilita las rutas aprobadas. Debe permanecer en
+`false` hasta el cutover.
 
 ---
 
@@ -82,6 +89,24 @@ Abrir en el navegador:
 ```bash
 npm run build
 npm start
+```
+
+## ✅ Validación
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run test:seo
+```
+
+El validador HTTP requiere un build y un servidor local en el puerto 3101:
+
+```bash
+npm run build
+npm run start -- -H 127.0.0.1 -p 3101
+# En otra terminal:
+npm run validate:seo-http
 ```
 
 ---
