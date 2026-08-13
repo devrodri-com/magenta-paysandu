@@ -1,9 +1,9 @@
 // src/app/contacto/page.tsx
-import type { Metadata } from "next";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import { FaEnvelope, FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { LuArrowRight, LuArrowUpRight } from "react-icons/lu";
+import { metadataForPath } from "@/config/seo";
 import {
   CONTACT_ADDRESS,
   CONTACT_CITY,
@@ -20,14 +20,7 @@ import {
   WHATSAPP_URL_TEXT_CONSULTA,
 } from "@/data/contact";
 
-export const metadata: Metadata = {
-  title: "Contacto – WhatsApp, email y ubicación en Paysandú | Imprenta Magenta",
-  description:
-    "Escribinos por WhatsApp o email para consultas generales, o visitá Imprenta Magenta en Paysandú. Encontrá acá todos nuestros canales de contacto, horarios y cómo llegar.",
-  alternates: {
-    canonical: "/contacto",
-  },
-};
+export const metadata = metadataForPath("/contacto");
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";

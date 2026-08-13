@@ -1,17 +1,12 @@
 // src/app/productos/page.tsx
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
+import { metadataForPath } from "@/config/seo";
 import { PRODUCT_CATEGORIES, OTHER_PRODUCTS } from "@/data/products";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
 import { ProductCategorySection } from "./ProductCategorySection";
 
-export const metadata: Metadata = {
-  title:
-    "Productos – Volantes, libretas, packaging, adhesivos y más | Imprenta Magenta",
-  description:
-    "Volantes, libretas comerciales, packaging, adhesivos, revistas, bolsas de papel, papelería corporativa y rollos para POS. Impresión personalizada en Paysandú.",
-};
+export const metadata = metadataForPath("/productos");
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";

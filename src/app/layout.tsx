@@ -1,55 +1,58 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { PAGE_SEO, SEO_CONFIG, robotsForPath } from "@/config/seo";
+
+const homeMetadata = PAGE_SEO["/"];
+const openGraphImageUrl = new URL(
+  SEO_CONFIG.openGraphImage.path,
+  SEO_CONFIG.canonicalOrigin,
+).toString();
 
 export const metadata: Metadata = {
-  title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
-  description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
-  metadataBase: new URL("https://www.magentauruguay.com"),
+  metadataBase: new URL(SEO_CONFIG.canonicalOrigin),
+  applicationName: SEO_CONFIG.publicBrand,
+  title: {
+    default: homeMetadata.title,
+    template: `%s | ${SEO_CONFIG.titleSuffix}`,
+  },
+  description: homeMetadata.description,
+  robots: robotsForPath("/"),
   openGraph: {
-    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
-    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
-    url: "/",
-    siteName: "Imprenta Magenta Paysandú",
+    title: homeMetadata.title,
+    description: homeMetadata.description,
+    siteName: SEO_CONFIG.siteName,
     images: [
       {
-        url: "/og-magenta.jpg",
-        width: 1200,
-        height: 630,
+        url: openGraphImageUrl,
+        width: SEO_CONFIG.openGraphImage.width,
+        height: SEO_CONFIG.openGraphImage.height,
+        alt: SEO_CONFIG.openGraphImage.alt,
       },
     ],
-    locale: "es_UY",
+    locale: SEO_CONFIG.locale,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Imprenta Magenta Paysandú – Impresión digital, offset y packaging",
-    description: "Imprenta Magenta es una imprenta moderna en Paysandú, especializada en impresión digital, offset, packaging, bolsas de papel, adhesivos, afiches y material administrativo para empresas y emprendedores.",
-    images: ["/og-magenta.jpg"],
+    title: homeMetadata.title,
+    description: homeMetadata.description,
+    images: [openGraphImageUrl],
   },
   icons: {
-    icon: "/favicon-32x32.png",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    other: [
-      {
-        rel: "icon",
-        url: "/favicon-16x16.png",
-        sizes: "16x16",
-      },
-      {
-        rel: "icon",
-        url: "/favicon-32x32.png",
-        sizes: "32x32",
-      },
-      {
-        rel: "apple-touch-icon",
-        url: "/apple-touch-icon.png",
-        sizes: "180x180",
-      },
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon.png", sizes: "192x192", type: "image/png" }],
   },
+  manifest: "/manifest.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
@@ -58,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang={SEO_CONFIG.language}>
       <body className="bg-slate-950 text-slate-100 antialiased">
         {/* NAVBAR */}
         <Navbar />
