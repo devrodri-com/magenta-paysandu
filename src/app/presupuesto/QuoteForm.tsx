@@ -20,8 +20,17 @@ import {
   type QuoteJobType,
   type QuoteSubmissionStatus,
 } from "@/lib/quote-request";
+import { TURNSTILE_TOKEN_FIELD } from "@/lib/turnstile";
 import { JobTypeSelect } from "./JobTypeSelect";
+import {
+  TurnstileWidget,
+  TURNSTILE_STATUS_ID,
+  type TurnstileStatus,
+} from "./TurnstileWidget";
 import { submitQuoteRequest } from "./actions";
+
+/** Sin Sitekey no hay verificación posible: el formulario no puede enviar. */
+const MISSING_SITE_KEY_STATE = toPublicQuoteFailure("configuration_error");
 
 const controlClassName =
   "mt-1 w-full rounded-lg border border-slate-400 bg-slate-900 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-slate-400 focus-visible:border-brand-rosaClaro focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 disabled:cursor-wait disabled:opacity-70";
@@ -141,14 +150,19 @@ function FormStatus({
   );
 }
 
-export function QuoteForm() {
+export function QuoteForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const [values, setValues] = useState<QuoteFormValues>(EMPTY_FORM_VALUES);
   const [responseDismissed, setResponseDismissed] = useState(false);
   const [dismissedErrorFields, setDismissedErrorFields] = useState<
     QuoteFieldName[]
   >([]);
   const [formStartedAt, setFormStartedAt] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileStatus, setTurnstileStatus] =
+    useState<TurnstileStatus>("loading");
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
   const submissionInFlightRef = useRef(false);
+  const siteKey = turnstileSiteKey.trim();
   const submitAndHandleSuccess = useCallback(
     async (previousState: typeof INITIAL_QUOTE_FORM_STATE, formData: FormData) => {
       try {
@@ -164,6 +178,12 @@ export function QuoteForm() {
         return toPublicQuoteFailure("delivery_error", error);
       } finally {
         submissionInFlightRef.current = false;
+        // El token es de un solo uso: se descarta siempre y se pide otro,
+        // tanto tras un éxito como tras cualquier error recuperable. Cambiar
+        // la clave vuelve a montar el widget, que emitirá un token nuevo.
+        setTurnstileToken("");
+        setTurnstileStatus("loading");
+        setTurnstileResetKey((current) => current + 1);
       }
     },
     [],
@@ -189,10 +209,27 @@ export function QuoteForm() {
       ? INITIAL_QUOTE_FORM_STATE
       : { ...state, fieldErrors: activeFieldErrors };
   const fieldErrors = pending ? undefined : displayedState.fieldErrors;
-  const visibleStatus: QuoteSubmissionStatus = pending
-    ? "submitting"
-    : displayedState.status;
-  const visibleMessage = pending ? "Enviando…" : displayedState.message;
+  const turnstileConfigured = siteKey.length > 0;
+  let visibleStatus: QuoteSubmissionStatus;
+  let visibleMessage: string;
+
+  if (!turnstileConfigured) {
+    visibleStatus = MISSING_SITE_KEY_STATE.status;
+    visibleMessage = MISSING_SITE_KEY_STATE.message;
+  } else if (pending) {
+    visibleStatus = "submitting";
+    visibleMessage = "Enviando…";
+  } else {
+    visibleStatus = displayedState.status;
+    visibleMessage = displayedState.message;
+  }
+
+  const canSubmit =
+    turnstileConfigured &&
+    Boolean(formStartedAt) &&
+    !pending &&
+    turnstileStatus === "solved" &&
+    turnstileToken.length > 0;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -224,7 +261,7 @@ export function QuoteForm() {
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
 
-    if (submissionInFlightRef.current) return;
+    if (submissionInFlightRef.current || !canSubmit) return;
     submissionInFlightRef.current = true;
     setResponseDismissed(false);
     setDismissedErrorFields([]);
@@ -445,13 +482,33 @@ export function QuoteForm() {
         readOnly
       />
 
-      <button
-        type="submit"
-        disabled={pending || !formStartedAt}
-        className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-brand-magenta px-7 text-sm font-semibold text-white transition hover:bg-[#c3006b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {pending ? "Enviando…" : "Enviar consulta"}
-      </button>
+      <div>
+        {turnstileConfigured ? (
+          <>
+            <TurnstileWidget
+              siteKey={siteKey}
+              resetKey={turnstileResetKey}
+              onTokenChange={setTurnstileToken}
+              onStatusChange={setTurnstileStatus}
+            />
+            <input
+              type="hidden"
+              name={TURNSTILE_TOKEN_FIELD}
+              value={turnstileToken}
+              readOnly
+            />
+          </>
+        ) : null}
+
+        <button
+          type="submit"
+          disabled={!canSubmit}
+          aria-describedby={turnstileConfigured ? TURNSTILE_STATUS_ID : undefined}
+          className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-brand-magenta px-7 text-sm font-semibold text-white transition hover:bg-[#c3006b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {pending ? "Enviando…" : "Enviar consulta"}
+        </button>
+      </div>
       </fieldset>
     </form>
   );

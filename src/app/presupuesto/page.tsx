@@ -50,7 +50,14 @@ export default function PresupuestoPage() {
             </p>
           </div>
 
-          <QuoteForm />
+          {/*
+            La Sitekey se resuelve en el Server Component y baja como prop: es
+            pública por definición y así el Client Component no depende de que
+            `process.env` quede inlineado en el bundle del navegador.
+          */}
+          <QuoteForm
+            turnstileSiteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+          />
         </section>
       </div>
     </div>

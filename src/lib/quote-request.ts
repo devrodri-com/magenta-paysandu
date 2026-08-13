@@ -69,6 +69,7 @@ export type QuoteSubmissionStatus =
   | "submitting"
   | "success"
   | "validation_error"
+  | "verification_error"
   | "delivery_error"
   | "configuration_error";
 
@@ -91,9 +92,14 @@ type QuoteValidationResult =
       formError?: string;
     };
 
-type PublicFailureStatus = "delivery_error" | "configuration_error";
+type PublicFailureStatus =
+  | "verification_error"
+  | "delivery_error"
+  | "configuration_error";
 
 const PUBLIC_FAILURE_MESSAGES: Record<PublicFailureStatus, string> = {
+  verification_error:
+    "No pudimos completar la verificación de seguridad. Actualizá la verificación e intentá nuevamente.",
   delivery_error:
     "No pudimos enviar la solicitud en este momento. Tus datos siguen en el formulario para que puedas intentar nuevamente o contactarnos por WhatsApp.",
   configuration_error:

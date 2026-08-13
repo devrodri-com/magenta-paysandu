@@ -13,9 +13,11 @@ import {
   type QuoteFormState,
   type RawQuoteRequest,
 } from "@/lib/quote-request";
+import { TURNSTILE_TOKEN_FIELD, verifyTurnstileToken } from "@/lib/turnstile";
 
-type ResendConfiguration = QuoteEmailConfiguration & {
+type QuoteConfiguration = QuoteEmailConfiguration & {
   apiKey: string;
+  turnstileSecret: string;
 };
 
 function formValue(formData: FormData, name: string): string {
@@ -36,23 +38,26 @@ function readRequest(formData: FormData): RawQuoteRequest {
   };
 }
 
-function readConfiguration(): ResendConfiguration | null {
+function readConfiguration(): QuoteConfiguration | null {
   const apiKey = process.env.RESEND_API_KEY?.trim() ?? "";
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim() ?? "";
   const from = process.env.MAGENTA_QUOTE_FROM?.trim() ?? "";
   const to = process.env.MAGENTA_QUOTE_TO?.trim() ?? "";
   const emailConfiguration = { from, to };
 
   if (
     !apiKey ||
+    !turnstileSecret ||
     !from ||
     !to ||
     hasUnsafeControlCharacters(apiKey) ||
+    hasUnsafeControlCharacters(turnstileSecret) ||
     !isValidQuoteEmailConfiguration(emailConfiguration)
   ) {
     return null;
   }
 
-  return { apiKey, ...emailConfiguration };
+  return { apiKey, turnstileSecret, ...emailConfiguration };
 }
 
 export async function submitQuoteRequest(
@@ -77,7 +82,23 @@ export async function submitQuoteRequest(
     return toPublicQuoteFailure("configuration_error");
   }
 
-  const { apiKey, ...emailConfiguration } = configuration;
+  const { apiKey, turnstileSecret, ...emailConfiguration } = configuration;
+
+  // Turnstile es el último gate antes de Resend: si no queda verificado, el
+  // envío se corta acá y el proveedor de email nunca se invoca.
+  const verification = await verifyTurnstileToken({
+    token: formData.get(TURNSTILE_TOKEN_FIELD),
+    secret: turnstileSecret,
+  });
+
+  if (verification !== "verified") {
+    return toPublicQuoteFailure(
+      verification === "not_configured"
+        ? "configuration_error"
+        : "verification_error",
+    );
+  }
+
   const payload = buildQuoteEmailPayload(emailConfiguration, validation.data);
 
   try {
