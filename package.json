@@ -13,7 +13,7 @@
     "validate:seo-http": "node scripts/validate-seo-http.mjs"
   },
   "dependencies": {
-    "next": "16.2.11",
+    "next": "16.3.1",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-icons": "^5.5.0",
@@ -25,7 +25,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.11",
+    "eslint-config-next": "16.3.1",
     "tailwindcss": "4.3.0",
     "typescript": "^5",
     "vitest": "4.1.10"
