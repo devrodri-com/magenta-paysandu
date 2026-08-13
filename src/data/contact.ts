@@ -30,4 +30,17 @@ const MAPS_QUERY = encodeURIComponent(
 );
 export const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 export const MAPS_LINK_URL = `https://www.google.com/maps?q=${MAPS_QUERY}`;
-export const MAILTO_PRESUPUESTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Solicitud de presupuesto - Imprenta Magenta")}&body=${encodeURIComponent("Hola Magenta!%0D%0A%0D%0AQuiero solicitar un presupuesto para:%0D%0A-%20Producto:%0D%0A-%20Cantidad:%0D%0A-%20Medidas:%0D%0A-%20Terminación:%0D%0A-%20Fecha estimada:%0D%0A%0D%0AGracias!")}`;
+
+const MAILTO_PRESUPUESTO_SUBJECT = "Solicitud de presupuesto - Imprenta Magenta";
+const MAILTO_PRESUPUESTO_BODY = `Hola Magenta!
+
+Quiero solicitar un presupuesto para:
+- Producto:
+- Cantidad:
+- Medidas:
+- Terminación:
+- Fecha estimada:
+
+Gracias!`;
+
+export const MAILTO_PRESUPUESTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(MAILTO_PRESUPUESTO_SUBJECT)}&body=${encodeURIComponent(MAILTO_PRESUPUESTO_BODY)}`;
