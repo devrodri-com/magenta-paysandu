@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SEO_CONFIG } from "@/config/seo";
 import { ABOUT_FOOTER_TAGLINE } from "@/data/about";
 import {
   CONTACT_ADDRESS,
@@ -107,7 +108,8 @@ export default function Footer() {
       <div className="border-t border-slate-800 bg-slate-950/80">
         <div className="mx-auto max-w-6xl px-4 py-4 text-xs text-slate-400 text-center">
           <p>
-            © {new Date().getFullYear()} Magenta. Todos los derechos reservados.
+            © {new Date().getFullYear()} {SEO_CONFIG.publicBrand} ·{" "}
+            {SEO_CONFIG.legalName}. Todos los derechos reservados.
             <br className="sm:hidden" />
             <span className="sm:inline sm:ml-1">
               · Hecho con <span className="font-semibold text-slate-300">Next.js</span> por{' '}

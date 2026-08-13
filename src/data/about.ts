@@ -1,11 +1,11 @@
-// src/data/about.ts
+import { SEO_CONFIG } from "@/config/seo";
 
 /**
  * Contenido institucional aprobado (Refresh 2026 · Nosotros).
  * Fuente única para la Home (AboutSection), /sobre-nosotros y el Footer:
  * el claim, la historia y los pilares no deben divergir entre superficies.
  */
-export const ABOUT_CLAIM = "Más de 16 años haciendo tus ideas realidad";
+export const ABOUT_CLAIM = `${SEO_CONFIG.publicFoundingCopy} haciendo tus ideas realidad`;
 
 /** Historia completa: se muestra íntegra solo en /sobre-nosotros. */
 export const ABOUT_STORY = [
@@ -21,7 +21,7 @@ export const ABOUT_SUMMARY = [
 
 /** Línea breve de identidad para el Footer. */
 export const ABOUT_FOOTER_TAGLINE =
-  "Más de 16 años acompañando a empresas, comercios y emprendedores.";
+  `${SEO_CONFIG.publicFoundingCopy} acompañando a empresas, comercios y emprendedores.`;
 
 export const MISSION =
   "Ayudar a empresas y emprendedores a convertir sus ideas en productos impresos, ofreciendo calidad, rapidez y atención personalizada en cada proyecto.";

@@ -1,6 +1,16 @@
 // src/app/not-found.tsx
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
+
+export const metadata: Metadata = {
+  title: "Página no encontrada",
+  description: "La página que buscás no existe en el sitio de Magenta.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";
