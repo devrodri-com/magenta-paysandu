@@ -14,6 +14,7 @@ import {
   SERVICES_HEADLINE,
   SERVICES_CLOSING,
 } from "@/data/services";
+import ServicePillarTitle from "./ServicePillarTitle";
 
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50";
@@ -84,7 +85,7 @@ export default function ServicesOverview() {
                 ) : null}
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900 sm:text-base">
-                    {pillar.title}
+                    <ServicePillarTitle pillar={pillar} />
                   </h3>
                   <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
                     {pillar.copy}
