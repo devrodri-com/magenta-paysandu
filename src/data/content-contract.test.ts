@@ -1,6 +1,9 @@
 import { existsSync, statSync } from "node:fs";
 import path from "node:path";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import ClientsStrip from "@/app/components/ClientsStrip";
 import { ABOUT_STORY, ABOUT_SUMMARY } from "./about";
 import { CLIENT_LOGOS } from "./clients";
 import {
@@ -13,17 +16,49 @@ import { TESTIMONIALS } from "./testimonials";
 const APPROVED_ABOUT_COPY =
   "Acompañamos principalmente a empresas, comercios y emprendedores de Paysandú, y también trabajamos con clientes de todo Uruguay para transformar sus ideas en productos impresos de calidad.";
 
-const NEW_CLIENT_IDS = [
-  "condor-informatica",
-  "vital-salud",
-  "cookie-moon",
-  "moa-alfajores-artesanales",
-  "owl-24hs",
-  "jm-aromatizador-vehiculo",
-  "inmobiliaria-mannise",
-  "echart",
-  "green-lemon-baby-kids",
-  "teenagers",
+const APPROVED_NEW_CLIENTS = [
+  {
+    id: "condor-informatica",
+    name: "Condor Informática",
+    alt: "Logo de Condor Informática",
+  },
+  {
+    id: "vital-salud",
+    name: "VitalSalud",
+    alt: "Logo de VitalSalud",
+  },
+  {
+    id: "cookie-moon",
+    name: "Cookie Moon",
+    alt: "Logo de Cookie Moon",
+  },
+  {
+    id: "moa-alfajores-artesanales",
+    name: "Moá Alfajores Artesanales",
+    alt: "Logo de Moá Alfajores Artesanales",
+  },
+  {
+    id: "owl-24hs",
+    name: "Owl 24hs",
+    alt: "Logo de Owl 24hs",
+  },
+  {
+    id: "jm-aromatizador-vehiculo",
+    name: "JM Aromatizador para vehículo",
+    alt: "Logo de JM Aromatizador para vehículo",
+  },
+  {
+    id: "inmobiliaria-mannise",
+    name: "Inmobiliaria Mannise",
+    alt: "Logo de Inmobiliaria Mannise",
+  },
+  { id: "echart", name: "Echart", alt: "Logo de Echart" },
+  {
+    id: "green-lemon-baby-kids",
+    name: "Green Lemon Baby & Kids",
+    alt: "Logo de Green Lemon Baby & Kids",
+  },
+  { id: "teenagers", name: "Teenagers", alt: "Logo de Teenagers" },
 ] as const;
 
 function publicAssetPath(assetPath: string) {
@@ -114,7 +149,7 @@ describe("contrato de clientes", () => {
 
     for (const logo of CLIENT_LOGOS) {
       expect(logo.name.trim()).not.toBe("");
-      expect(logo.alt).toBe(logo.name);
+      expect(logo.alt.trim()).not.toBe("");
       expect(existsSync(publicAssetPath(logo.src))).toBe(true);
     }
 
@@ -123,13 +158,48 @@ describe("contrato de clientes", () => {
     expect(existsSync(publicAssetPath("/images/clientes/16.svg"))).toBe(false);
   });
 
+  it("usa literalmente los diez nombres y alt aprobados sin slogans", () => {
+    const newClients = APPROVED_NEW_CLIENTS.map(({ id }) =>
+      CLIENT_LOGOS.find((client) => client.id === id),
+    );
+
+    expect(newClients).toEqual(APPROVED_NEW_CLIENTS.map((approved) =>
+      expect.objectContaining(approved),
+    ));
+    expect(newClients.map((client) => client?.name)).toEqual(
+      APPROVED_NEW_CLIENTS.map(({ name }) => name),
+    );
+    expect(newClients.map((client) => client?.alt)).toEqual(
+      APPROVED_NEW_CLIENTS.map(({ alt }) => alt),
+    );
+    expect(
+      newClients.filter(
+        (client) =>
+          client && client.name === client.name.toLocaleUpperCase("es-UY"),
+      ),
+    ).toHaveLength(0);
+    expect(newClients.map((client) => client?.name).join(" ")).not.toMatch(
+      /felicidad en cada mordida|desde 1975 en Paysandú/i,
+    );
+  });
+
   it("incorpora los diez logos del PDF como WebP livianos", () => {
-    for (const id of NEW_CLIENT_IDS) {
-      const logo = CLIENT_LOGOS.find((item) => item.id === id);
-      expect(logo).toBeDefined();
-      expect(logo?.src.endsWith(".webp")).toBe(true);
-      expect(statSync(publicAssetPath(logo!.src)).size).toBeLessThan(200 * 1024);
+    for (const { id } of APPROVED_NEW_CLIENTS) {
+      const logo = CLIENT_LOGOS.find((item) => item.id === id)!;
+      expect(logo.src.endsWith(".webp")).toBe(true);
+      expect(statSync(publicAssetPath(logo.src)).size).toBeLessThan(200 * 1024);
     }
+  });
+
+  it("anuncia los clientes una vez y mantiene los clones decorativos ocultos", () => {
+    const markup = renderToStaticMarkup(createElement(ClientsStrip));
+    const imageAlts = [...markup.matchAll(/<img\b[^>]*\balt="([^"]*)"/g)].map(
+      (match) => match[1],
+    );
+
+    expect(imageAlts.filter(Boolean)).toHaveLength(27);
+    expect(imageAlts.filter((alt) => alt === "")).toHaveLength(27);
+    expect(markup).toMatch(/<ul[^>]*aria-hidden="true"/);
   });
 
   it("mantiene Pio Pio como único testimonio aprobado", () => {
