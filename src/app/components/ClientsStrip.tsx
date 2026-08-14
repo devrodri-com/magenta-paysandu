@@ -27,16 +27,18 @@ function LogoItem({
   logo: ClientLogo;
   decorative?: boolean;
 }) {
+  const isSvg = logo.src.endsWith(".svg");
+
   return (
-    <li className="flex shrink-0 items-center justify-center">
-      {/* unoptimized: /_next/image rechaza SVG (400) con la config por defecto. */}
+    <li className="flex h-24 w-36 shrink-0 items-center justify-center sm:h-28 sm:w-40">
       <Image
         src={logo.src}
-        alt={decorative ? "" : (logo.name ?? "")}
+        alt={decorative ? "" : logo.alt}
         width={160}
-        height={160}
-        unoptimized
-        className="h-16 w-auto object-contain sm:h-20"
+        height={112}
+        sizes="(min-width: 640px) 160px, 144px"
+        unoptimized={isSvg}
+        className="h-full w-full object-contain"
       />
     </li>
   );
