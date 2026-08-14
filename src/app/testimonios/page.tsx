@@ -1,7 +1,7 @@
 // src/app/testimonios/page.tsx
 import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
-import { metadataForPath } from "@/config/seo";
+import { LuArrowRight, LuArrowUpRight } from "react-icons/lu";
+import { metadataForPath, SEO_CONFIG } from "@/config/seo";
 import TestimonialCard from "../components/TestimonialCard";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
@@ -11,6 +11,9 @@ export const metadata = metadataForPath("/testimonios");
 /** Variante para la banda oscura final: el offset del ring debe ser oscuro. */
 const FOCUS_RING_DARK =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-rosaClaro focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+
+const FOCUS_RING_LIGHT =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-white";
 
 /** Magenta oscurecido ~15%: #e6007e no alcanza AA 4,5:1 en texto chico sobre fondos claros. */
 const MAGENTA_TEXT_AA = "text-[#c3006b]";
@@ -72,6 +75,28 @@ export default function TestimoniosPage() {
           </div>
         </section>
       )}
+
+      <section aria-label="Reseñas en Google" className="border-t border-slate-100">
+        <div className="mx-auto max-w-6xl px-4 py-12 text-center sm:py-14">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-600">
+            También podés conocer las opiniones publicadas por nuestros clientes
+            en Google.
+          </p>
+          <a
+            href={SEO_CONFIG.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver reseñas de Magenta en Google Maps"
+            className={`group mt-5 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg text-sm font-semibold text-[#c3006b] underline-offset-4 transition-colors hover:underline ${FOCUS_RING_LIGHT}`}
+          >
+            Ver reseñas en Google
+            <LuArrowUpRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+            />
+          </a>
+        </div>
+      </section>
 
       {/* C. CTA final: banda oscura compacta, mismo patrón que /sobre-nosotros. */}
       <section aria-labelledby="testimonios-cta-heading" className="bg-slate-950">

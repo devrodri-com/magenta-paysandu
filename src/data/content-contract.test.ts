@@ -4,6 +4,9 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import ClientsStrip from "@/app/components/ClientsStrip";
+import Testimonials from "@/app/components/Testimonials";
+import TestimoniosPage from "@/app/testimonios/page";
+import { SEO_CONFIG } from "@/config/seo";
 import { ABOUT_STORY, ABOUT_SUMMARY } from "./about";
 import { CLIENT_LOGOS } from "./clients";
 import {
@@ -212,6 +215,30 @@ describe("contrato de clientes", () => {
         logo: "/images/testimonials/pio-pio.svg",
       },
     ]);
+  });
+
+  it("enlaza ambos CTA con la ficha oficial de Google Maps", () => {
+    const surfaces = [
+      renderToStaticMarkup(createElement(Testimonials)),
+      renderToStaticMarkup(createElement(TestimoniosPage)),
+    ];
+
+    for (const markup of surfaces) {
+      expect(markup).toContain("Ver reseñas en Google");
+      expect(markup).not.toContain("Ver todos los testimonios");
+      expect(markup).toContain(
+        'aria-label="Ver reseñas de Magenta en Google Maps"',
+      );
+      expect(markup).toContain('target="_blank"');
+      expect(markup).toContain('rel="noopener noreferrer"');
+      expect(markup).toContain(
+        `href="${SEO_CONFIG.googleMapsUrl.replaceAll("&", "&amp;")}"`,
+      );
+    }
+
+    expect(surfaces[1]).toContain(
+      "También podés conocer las opiniones publicadas por nuestros clientes en Google.",
+    );
   });
 });
 
