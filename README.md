@@ -26,12 +26,12 @@ Este MVP incluye:
 - **React Icons**
 ---
 
-## 🌐 Sitio online
+## 🌐 Proyecto Vercel canónico
 
-- **Preview no canónico:** https://magenta-paysandu-m5in.vercel.app
-- **Host canónico oficial:** https://www.magentauruguay.com
+- `magenta-paysandu` es el proyecto canónico y contiene las variables funcionales de producción.
+- `magenta-paysandu-m5in` es un proyecto secundario y no debe recibir el dominio oficial.
 
-> Los previews permanecen fuera de indexación y no redirigen a producción.
+> Los previews permanecen fuera de indexación. La conexión del dominio público se gestiona en una tarea separada.
 
 ---
 

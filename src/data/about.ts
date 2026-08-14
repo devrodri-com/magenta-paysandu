@@ -9,13 +9,13 @@ export const ABOUT_CLAIM = `${SEO_CONFIG.publicFoundingCopy} haciendo tus ideas 
 
 /** Historia completa: se muestra íntegra solo en /sobre-nosotros. */
 export const ABOUT_STORY = [
-  "Acompañamos a empresas, comercios y emprendedores de Paysandú a transformar sus ideas en productos impresos de calidad. Combinamos experiencia, atención personalizada y una inversión constante en tecnología para ofrecer más calidad, mejores tiempos de entrega y nuevos productos que acompañen el crecimiento de cada cliente.",
+  "Acompañamos principalmente a empresas, comercios y emprendedores de Paysandú, y también trabajamos con clientes de todo Uruguay para transformar sus ideas en productos impresos de calidad.",
   "Creemos que una imprenta no solo imprime: asesora, propone y acompaña. Por eso trabajamos cerca de cada proyecto, incorporando nuevas máquinas y soluciones que nos permiten seguir evolucionando y brindar un servicio cada vez más completo, rápido y confiable.",
 ] as const;
 
 /** Versión condensada de la historia para el resumen de la Home. */
 export const ABOUT_SUMMARY = [
-  "Acompañamos a empresas, comercios y emprendedores de Paysandú a transformar sus ideas en productos impresos de calidad.",
+  "Acompañamos principalmente a empresas, comercios y emprendedores de Paysandú, y también trabajamos con clientes de todo Uruguay para transformar sus ideas en productos impresos de calidad.",
   "Combinamos experiencia, atención personalizada y tecnología para brindar soluciones cada vez más completas, rápidas y confiables.",
 ] as const;
 
