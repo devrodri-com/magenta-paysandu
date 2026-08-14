@@ -6,10 +6,12 @@ import { metadataForPath } from "@/config/seo";
 import {
   SERVICE_PILLARS,
   PRINTING_TECHNOLOGIES,
+  MACHINE_IMAGE_NOTE,
   SERVICES_HEADLINE,
   SERVICES_CLOSING,
 } from "@/data/services";
 import { WHATSAPP_URL_TEXT } from "@/data/contact";
+import ServicePillarTitle from "@/app/components/ServicePillarTitle";
 
 export const metadata = metadataForPath("/servicios");
 
@@ -92,7 +94,7 @@ export default function ServiciosPage() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                  {pillar.title}
+                  <ServicePillarTitle pillar={pillar} />
                 </h2>
                 <p className="col-start-2 mt-2 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base lg:col-start-3 lg:mt-0">
                   {pillar.copy}
@@ -144,28 +146,35 @@ export default function ServiciosPage() {
                     : undefined
                 }
               >
-                {/*
-                  Los assets 2026 son 1200×900 (4:3 exacto): el contenedor 4:3
-                  + object-cover muestra la escena completa sin recorte.
-                */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
                   <Image
                     src={tech.image}
                     alt={tech.imageAlt}
-                    fill
+                    width={tech.imageWidth}
+                    height={tech.imageHeight}
                     sizes="(min-width: 1152px) 352px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
+                    className="h-full w-full object-contain"
                   />
                 </div>
                 <h3 className="mt-4 text-base font-semibold text-slate-900 sm:text-lg">
                   {tech.name}
                 </h3>
+                <div className="mt-1 min-h-5">
+                  {tech.model ? (
+                    <p className="text-sm font-medium leading-5 text-slate-700">
+                      {tech.model}
+                    </p>
+                  ) : null}
+                </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {tech.copy}
                 </p>
               </li>
             ))}
           </ul>
+          <p className="mt-6 max-w-3xl text-xs leading-relaxed text-slate-600">
+            {MACHINE_IMAGE_NOTE}
+          </p>
         </div>
       </section>
 
