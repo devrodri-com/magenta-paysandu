@@ -42,17 +42,6 @@ body {
   animation-play-state: paused;
 }
 
-/*
- * Pausa en hover como mejora progresiva; el control real es el botón.
- * Solo con hover real: en touch el :hover queda pegado tras un tap y
- * congelaría la cinta desincronizada del botón.
- */
-@media (hover: hover) {
-  .clients-marquee-viewport:hover .clients-marquee-track {
-    animation-play-state: paused;
-  }
-}
-
 /* Fundido sutil en los bordes para que la cinta no corte los logos en seco. */
 .clients-marquee-viewport {
   -webkit-mask-image: linear-gradient(
