@@ -9,8 +9,13 @@ export type ClientLogo = {
   alt: string;
 };
 
-function clientLogo(id: string, src: string, name: string): ClientLogo {
-  return { id, src, name, alt: name };
+function clientLogo(
+  id: string,
+  src: string,
+  name: string,
+  alt = name,
+): ClientLogo {
+  return { id, src, name, alt };
 }
 
 export const CLIENT_LOGOS: ClientLogo[] = [
@@ -54,43 +59,61 @@ export const CLIENT_LOGOS: ClientLogo[] = [
   clientLogo(
     "condor-informatica",
     "/images/clientes/condor-informatica.webp",
-    "CONDOR INFORMATICA",
+    "Condor Informática",
+    "Logo de Condor Informática",
   ),
   clientLogo(
     "vital-salud",
     "/images/clientes/vital-salud.webp",
     "VitalSalud",
+    "Logo de VitalSalud",
   ),
   clientLogo(
     "cookie-moon",
     "/images/clientes/cookie-moon.webp",
-    "COOKIE MOON - FELICIDAD EN CADA MORDIDA",
+    "Cookie Moon",
+    "Logo de Cookie Moon",
   ),
   clientLogo(
     "moa-alfajores-artesanales",
     "/images/clientes/moa-alfajores-artesanales.webp",
-    "MOÁ - ALFAJORES ARTESANALES",
+    "Moá Alfajores Artesanales",
+    "Logo de Moá Alfajores Artesanales",
   ),
-  clientLogo("owl-24hs", "/images/clientes/owl-24hs.webp", "Owl 24hs"),
+  clientLogo(
+    "owl-24hs",
+    "/images/clientes/owl-24hs.webp",
+    "Owl 24hs",
+    "Logo de Owl 24hs",
+  ),
   clientLogo(
     "jm-aromatizador-vehiculo",
     "/images/clientes/jm-aromatizador-vehiculo.webp",
-    "JM - AROMATIZADOR PARA VEHÍCULO",
+    "JM Aromatizador para vehículo",
+    "Logo de JM Aromatizador para vehículo",
   ),
   clientLogo(
     "inmobiliaria-mannise",
     "/images/clientes/inmobiliaria-mannise.webp",
-    "INMOBILIARIA MANNISE",
+    "Inmobiliaria Mannise",
+    "Logo de Inmobiliaria Mannise",
   ),
   clientLogo(
     "echart",
     "/images/clientes/echart.webp",
-    "Echart - Desde 1975 en Paysandú",
+    "Echart",
+    "Logo de Echart",
   ),
   clientLogo(
     "green-lemon-baby-kids",
     "/images/clientes/green-lemon-baby-kids.webp",
-    "Green lemon - Baby&kids",
+    "Green Lemon Baby & Kids",
+    "Logo de Green Lemon Baby & Kids",
   ),
-  clientLogo("teenagers", "/images/clientes/teenagers.webp", "Teenagers"),
+  clientLogo(
+    "teenagers",
+    "/images/clientes/teenagers.webp",
+    "Teenagers",
+    "Logo de Teenagers",
+  ),
 ];
