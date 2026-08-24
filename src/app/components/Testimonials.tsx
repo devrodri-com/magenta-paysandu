@@ -46,12 +46,23 @@ export default function Testimonials() {
           </div>
         ) : (
           <ul
-            className={`mt-10 grid gap-6 sm:grid-cols-2 ${
-              TESTIMONIALS.length >= 3 ? "lg:grid-cols-3" : ""
+            className={`mt-10 grid grid-cols-1 gap-6 ${
+              TESTIMONIALS.length === 3
+                ? "sm:grid-cols-4 lg:grid-cols-3"
+                : `sm:grid-cols-2 ${
+                    TESTIMONIALS.length > 3 ? "lg:grid-cols-3" : ""
+                  }`
             }`}
           >
             {TESTIMONIALS.map((testimonial) => (
-              <li key={testimonial.id}>
+              <li
+                key={testimonial.id}
+                className={`h-full ${
+                  TESTIMONIALS.length === 3
+                    ? "sm:col-span-2 sm:last:col-start-2 lg:col-span-1 lg:last:col-start-auto"
+                    : ""
+                }`}
+              >
                 <TestimonialCard testimonial={testimonial} />
               </li>
             ))}

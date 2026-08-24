@@ -6,7 +6,12 @@ import { describe, expect, it } from "vitest";
 import ClientsStrip from "@/app/components/ClientsStrip";
 import Testimonials from "@/app/components/Testimonials";
 import TestimoniosPage from "@/app/testimonios/page";
-import { SEO_CONFIG } from "@/config/seo";
+import {
+  canonicalUrl,
+  metadataForPath,
+  robotsForPath,
+  SEO_CONFIG,
+} from "@/config/seo";
 import { ABOUT_STORY, ABOUT_SUMMARY } from "./about";
 import { CLIENT_LOGOS } from "./clients";
 import {
@@ -205,16 +210,99 @@ describe("contrato de clientes", () => {
     expect(markup).toMatch(/<ul[^>]*aria-hidden="true"/);
   });
 
-  it("mantiene Pio Pio como único testimonio aprobado", () => {
-    expect(TESTIMONIALS).toEqual([
-      {
-        id: "pio-pio",
-        businessName: "Pio Pio",
-        category: "Gastronomía",
-        text: "Los impresos son de excelente calidad y las entregas siempre llegan en tiempo y forma. Además, se adaptan a las necesidades de cada empresa. Los súper recomendamos.",
-        logo: "/images/testimonials/pio-pio.svg",
-      },
+  it("publica exactamente tres testimonios reales, únicos y en orden", () => {
+    const ids = TESTIMONIALS.map(({ id }) => id);
+
+    expect(TESTIMONIALS).toHaveLength(3);
+    expect(ids).toEqual([
+      "pio-pio",
+      "bodega-wasiluk",
+      "condor-informatica",
     ]);
+    expect(new Set(ids).size).toBe(3);
+  });
+
+  it("preserva literalmente el testimonio inicial de Pio Pio", () => {
+    expect(TESTIMONIALS[0]).toEqual({
+      id: "pio-pio",
+      businessName: "Pio Pio",
+      category: "Gastronomía",
+      text: "Los impresos son de excelente calidad y las entregas siempre llegan en tiempo y forma. Además, se adaptan a las necesidades de cada empresa. Los súper recomendamos.",
+      logo: "/images/testimonials/pio-pio.svg",
+    });
+  });
+
+  it("conserva literalmente el testimonio autorizado de Bodega Wasiluk", () => {
+    expect(TESTIMONIALS[1]).toEqual({
+      id: "bodega-wasiluk",
+      businessName: "Bodega Wasiluk",
+      category: "Vitivinicultura",
+      relationshipNote: "Más de 10 años trabajando juntos",
+      text: "Magenta siempre nos atiende con rapidez y eficiencia, incluso cuando tenemos una urgencia. Cumple nuestras expectativas, ofrece muy buenos precios y por eso seguimos confiando en su trabajo después de tantos años.",
+      logo: "/images/clientes/3.svg",
+    });
+  });
+
+  it("conserva literalmente el testimonio autorizado de Condor", () => {
+    expect(TESTIMONIALS[2]).toEqual({
+      id: "condor-informatica",
+      businessName: "Condor Informática",
+      category: "Tecnología",
+      text: "Buen servicio y atención rápida.",
+      logo: "/images/clientes/condor-informatica.webp",
+    });
+    expect(TESTIMONIALS[2]).not.toHaveProperty("relationshipNote");
+  });
+
+  it("reutiliza logos existentes sin duplicados ni contenido no autorizado", () => {
+    const logos = TESTIMONIALS.map(({ logo }) => logo);
+    const serialized = JSON.stringify(TESTIMONIALS);
+
+    expect(logos).toEqual([
+      "/images/testimonials/pio-pio.svg",
+      "/images/clientes/3.svg",
+      "/images/clientes/condor-informatica.webp",
+    ]);
+    expect(new Set(logos).size).toBe(3);
+    for (const logo of logos) {
+      expect(logo).toBeDefined();
+      if (!logo) {
+        throw new Error("Todo testimonio aprobado debe reutilizar un logo local");
+      }
+      expect(existsSync(publicAssetPath(logo))).toBe(true);
+    }
+
+    expect(serialized).not.toMatch(/[★☆⭐]|rating|puntuación|10 de 10/i);
+    expect(serialized).not.toContain("Bodegas Wasiluk");
+  });
+
+  it("renderiza la fuente compartida y deja la antigüedad fuera de la cita", () => {
+    const relationshipNote = "Más de 10 años trabajando juntos";
+    const surfaces = [
+      renderToStaticMarkup(createElement(Testimonials)),
+      renderToStaticMarkup(createElement(TestimoniosPage)),
+    ];
+
+    for (const markup of surfaces) {
+      for (const testimonial of TESTIMONIALS) {
+        expect(markup).toContain(testimonial.businessName);
+        expect(markup).toContain(testimonial.text);
+      }
+
+      expect(markup).toContain(relationshipNote);
+      expect(markup.indexOf(relationshipNote)).toBeGreaterThan(
+        markup.indexOf("Vitivinicultura"),
+      );
+      for (const blockquote of markup.matchAll(
+        /<blockquote\b[^>]*>[\s\S]*?<\/blockquote>/g,
+      )) {
+        expect(blockquote[0]).not.toContain(relationshipNote);
+      }
+
+      expect(markup).toContain("sm:grid-cols-4");
+      expect(markup).toContain("sm:last:col-start-2");
+      expect(markup).toContain("lg:grid-cols-3");
+    }
   });
 
   it("enlaza ambos CTA con la ficha oficial de Google Maps", () => {
@@ -239,6 +327,16 @@ describe("contrato de clientes", () => {
     expect(surfaces[1]).toContain(
       "También podés conocer las opiniones publicadas por nuestros clientes en Google.",
     );
+  });
+
+  it("mantiene /testimonios canónica y fuera de indexación", () => {
+    const metadata = metadataForPath("/testimonios");
+
+    expect(metadata.alternates?.canonical).toBe(canonicalUrl("/testimonios"));
+    expect(robotsForPath("/testimonios", true)).toEqual({
+      index: false,
+      follow: true,
+    });
   });
 });
 

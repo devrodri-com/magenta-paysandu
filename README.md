@@ -223,7 +223,7 @@ Detalle operativo completo en
 ```bash
 npm run lint        # ESLint
 npm run typecheck   # tsc --noEmit
-npm test            # Vitest · 85 tests en 5 archivos
+npm test            # Vitest · 105 tests en 7 archivos
 npm run test:seo    # node:test · 12 tests de contrato SEO
 ```
 
