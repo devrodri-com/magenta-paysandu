@@ -20,6 +20,16 @@ const MAGENTA_TEXT_AA = "text-[#c3006b]";
 const GROUP_CLASSES =
   "clients-marquee-group flex shrink-0 items-center gap-10 pr-10 sm:gap-14 sm:pr-14";
 
+export function getNextClientCarouselPausedState(isPaused: boolean) {
+  return !isPaused;
+}
+
+export function getClientCarouselControlLabel(isPaused: boolean) {
+  return isPaused
+    ? "Reanudar logos de clientes"
+    : "Pausar logos de clientes";
+}
+
 function LogoItem({
   logo,
   decorative = false,
@@ -27,16 +37,18 @@ function LogoItem({
   logo: ClientLogo;
   decorative?: boolean;
 }) {
+  const isSvg = logo.src.endsWith(".svg");
+
   return (
-    <li className="flex shrink-0 items-center justify-center">
-      {/* unoptimized: /_next/image rechaza SVG (400) con la config por defecto. */}
+    <li className="flex h-24 w-36 shrink-0 items-center justify-center sm:h-28 sm:w-40">
       <Image
         src={logo.src}
-        alt={decorative ? "" : (logo.name ?? "")}
+        alt={decorative ? "" : logo.alt}
         width={160}
-        height={160}
-        unoptimized
-        className="h-16 w-auto object-contain sm:h-20"
+        height={112}
+        sizes="(min-width: 640px) 160px, 144px"
+        unoptimized={isSvg}
+        className="h-full w-full object-contain"
       />
     </li>
   );
@@ -44,7 +56,7 @@ function LogoItem({
 
 /*
  * Client Component solo por el control de pausa: el estado vive en un
- * data-attribute y el CSS resuelve la animación, el hover y reduced motion.
+ * data-attribute y el CSS resuelve la animación y reduced motion.
  */
 export default function ClientsStrip() {
   const [isPaused, setIsPaused] = useState(false);
@@ -69,14 +81,12 @@ export default function ClientsStrip() {
               Algunas de las marcas que confían en Magenta
             </h2>
           </div>
-          {/*
-            Patrón APG de control de reproducción: el nombre accesible alterna
-            Pausar/Reanudar y comunica el estado; sin aria-pressed, que exigiría
-            una etiqueta fija y aquí se contradiría con el texto visible.
-          */}
+          {/* El botón es la única pausa voluntaria y expone su estado. */}
           <button
             type="button"
-            onClick={() => setIsPaused((paused) => !paused)}
+            onClick={() => setIsPaused(getNextClientCarouselPausedState)}
+            aria-pressed={isPaused}
+            aria-label={getClientCarouselControlLabel(isPaused)}
             className={`clients-marquee-control inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2 rounded-full border border-slate-200 px-4 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900 ${FOCUS_RING}`}
           >
             {isPaused ? (

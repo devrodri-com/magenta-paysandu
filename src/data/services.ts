@@ -1,5 +1,3 @@
-import { SEO_CONFIG } from "@/config/seo";
-
 /**
  * Titular y frase de cierre compartidos por la Home (ServicesOverview) y
  * /servicios: el spec pide que sean idénticos en ambas superficies.
@@ -15,6 +13,7 @@ export const SERVICES_CLOSING =
 export type ServicePillar = {
   id: string;
   title: string;
+  emphasis?: string;
   copy: string;
 };
 
@@ -31,13 +30,15 @@ export const SERVICE_PILLARS: ServicePillar[] = [
   },
   {
     id: "tiradas",
-    title: "Desde pocas unidades",
-    copy: "Trabajamos desde pocas unidades hasta grandes tiradas, adaptando cada trabajo a tu necesidad.",
+    title: "Desde pocas unidades hasta",
+    emphasis: "grandes tiradas",
+    copy: "Adaptamos cada trabajo a la cantidad, el formato y las necesidades de cada proyecto.",
   },
   {
     id: "reparto",
-    title: "Reparto y envíos",
-    copy: `${SEO_CONFIG.delivery.local} ${SEO_CONFIG.delivery.national}`,
+    title: "Reparto semanal y",
+    emphasis: "entrega express",
+    copy: "Reparto semanal sin costo en Paysandú, coordinado según la producción. También ofrecemos entrega express con costo adicional. Para el resto del país, despachamos por la agencia que elija el cliente.",
   },
   {
     id: "integral",
@@ -49,37 +50,54 @@ export const SERVICE_PILLARS: ServicePillar[] = [
 /**
  * Tecnologías de impresión: respaldo técnico secundario de /servicios.
  * El copy explica cuándo conviene cada proceso, en lenguaje no técnico.
- * Las imágenes 2026 son generadas (no fotografías de las máquinas del
- * taller), por eso no se etiquetan con marcas ni modelos concretos.
+ * Las imágenes son ilustrativas. Offset y digital representan los modelos
+ * utilizados por Magenta; el plotter representa la tecnología de corte.
  */
 export type PrintingTechnology = {
   id: string;
   name: string;
+  model?: string;
   copy: string;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   imageAlt: string;
 };
+
+export const MACHINE_IMAGE_NOTE =
+  "Imágenes ilustrativas. Las referencias de impresión offset y digital corresponden a los modelos utilizados por Magenta; el plotter representa la tecnología de corte.";
 
 export const PRINTING_TECHNOLOGIES: PrintingTechnology[] = [
   {
     id: "offset",
     name: "Impresión offset",
+    model: "Heidelberg Speedmaster SM 52, 2 cuerpos",
     copy: "Ideal para grandes cantidades y trabajos que requieren consistencia de color en toda la tirada.",
-    image: "/images/servicios/2026/impresion-offset.webp",
-    imageAlt: "Prensa industrial de impresión offset en taller gráfico",
+    image: "/images/servicios/2026/heidelberg-speedmaster-sm52.webp",
+    imageWidth: 1536,
+    imageHeight: 1024,
+    imageAlt:
+      "Máquina offset Heidelberg Speedmaster SM 52 de dos cuerpos, imagen ilustrativa",
   },
   {
     id: "digital",
     name: "Impresión digital",
+    model: "Konica Minolta AccurioPrint C3070L",
     copy: "Ideal para tiradas cortas y piezas que requieren flexibilidad o personalización.",
-    image: "/images/servicios/2026/impresion-digital.webp",
-    imageAlt: "Prensa digital de producción en taller gráfico",
+    image: "/images/servicios/2026/konica-minolta-accurioprint-c3070l.webp",
+    imageWidth: 1536,
+    imageHeight: 1024,
+    imageAlt:
+      "Impresora digital Konica Minolta AccurioPrint C3070L, imagen ilustrativa",
   },
   {
     id: "plotter",
     name: "Plotter de corte",
     copy: "Ideal para adhesivos, etiquetas y piezas con formas especiales.",
     image: "/images/servicios/2026/plotter-corte.webp",
-    imageAlt: "Plotter profesional de corte trabajando con adhesivos en taller gráfico",
+    imageWidth: 1200,
+    imageHeight: 900,
+    imageAlt:
+      "Plotter de corte para adhesivos y etiquetas, imagen ilustrativa",
   },
 ];

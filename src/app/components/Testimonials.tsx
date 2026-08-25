@@ -1,6 +1,6 @@
 // src/app/components/Testimonials.tsx
-import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
+import { LuArrowUpRight } from "react-icons/lu";
+import { SEO_CONFIG } from "@/config/seo";
 import { TESTIMONIALS } from "@/data/testimonials";
 import TestimonialCard from "./TestimonialCard";
 
@@ -46,12 +46,23 @@ export default function Testimonials() {
           </div>
         ) : (
           <ul
-            className={`mt-10 grid gap-6 sm:grid-cols-2 ${
-              TESTIMONIALS.length >= 3 ? "lg:grid-cols-3" : ""
+            className={`mt-10 grid grid-cols-1 gap-6 ${
+              TESTIMONIALS.length === 3
+                ? "sm:grid-cols-4 lg:grid-cols-3"
+                : `sm:grid-cols-2 ${
+                    TESTIMONIALS.length > 3 ? "lg:grid-cols-3" : ""
+                  }`
             }`}
           >
             {TESTIMONIALS.map((testimonial) => (
-              <li key={testimonial.id}>
+              <li
+                key={testimonial.id}
+                className={`h-full ${
+                  TESTIMONIALS.length === 3
+                    ? "sm:col-span-2 sm:last:col-start-2 lg:col-span-1 lg:last:col-start-auto"
+                    : ""
+                }`}
+              >
                 <TestimonialCard testimonial={testimonial} />
               </li>
             ))}
@@ -59,16 +70,19 @@ export default function Testimonials() {
         )}
 
         <div className="mt-8 flex justify-center">
-          <Link
-            href="/testimonios"
+          <a
+            href={SEO_CONFIG.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver reseñas de Magenta en Google Maps"
             className={`group inline-flex min-h-[44px] items-center gap-1.5 rounded-lg text-sm font-semibold underline-offset-4 transition-colors hover:underline ${MAGENTA_TEXT_AA} ${FOCUS_RING}`}
           >
-            Ver todos los testimonios
-            <LuArrowRight
+            Ver reseñas en Google
+            <LuArrowUpRight
               aria-hidden="true"
-              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
             />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

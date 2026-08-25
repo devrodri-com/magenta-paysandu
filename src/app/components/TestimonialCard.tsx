@@ -62,6 +62,11 @@ export default function TestimonialCard({
               {testimonial.category}
             </p>
           )}
+          {testimonial.relationshipNote && (
+            <p className="mt-1 text-xs font-medium text-[#a30059]">
+              {testimonial.relationshipNote}
+            </p>
+          )}
         </div>
         {(testimonial.instagram || testimonial.website) && (
           <div className="flex shrink-0 items-center gap-1">
