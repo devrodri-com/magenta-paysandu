@@ -36,7 +36,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: "condor-informatica",
     businessName: "Condor Informática",
     category: "Tecnología",
-    text: "Buen servicio y atención rápida.",
+    text: "Buen servicio, atención rápida y una muy buena experiencia trabajando con Magenta. Estamos muy conformes con la atención y la forma de trabajar.",
     logo: "/images/clientes/condor-informatica.webp",
   },
 ];
