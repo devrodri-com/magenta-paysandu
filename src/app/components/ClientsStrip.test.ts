@@ -56,6 +56,24 @@ describe("control del carrusel de clientes", () => {
     expect(markup).toMatch(/data-paused="false"/);
   });
 
+  it("conserva el heading y destaca únicamente la palabra Magenta", () => {
+    const markup = renderToStaticMarkup(createElement(ClientsStrip));
+    const heading = markup.match(
+      /<h2\b[^>]*id="clientes-heading"[^>]*>([\s\S]*?)<\/h2>/,
+    )?.[1];
+
+    expect(heading).toBeDefined();
+    expect(
+      heading
+        ?.replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/<[^>]+>/g, ""),
+    ).toBe("Algunas de las marcas que confían en Magenta");
+    expect(heading).toMatch(
+      /Algunas de las marcas que confían en(?:<!-- -->)? <span class="text-\[#c3006b\]">Magenta<\/span>/,
+    );
+    expect(heading?.match(/text-\[#c3006b\]/g)).toHaveLength(1);
+  });
+
   it("conserva velocidad, loop y comportamiento estático en reduced motion", () => {
     expect(globalStyles).toContain(
       "animation: clients-marquee 84s linear infinite;",

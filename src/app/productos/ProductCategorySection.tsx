@@ -40,7 +40,7 @@ export function ProductCategorySection({
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
             {index} / {String(total).padStart(2, "0")}
           </p>
-          <p className="mt-4 text-[0.9375rem] font-semibold text-brand-magenta">
+          <p className="mt-4 text-base font-semibold text-brand-magenta sm:text-lg">
             {product.question}
           </p>
           <h2

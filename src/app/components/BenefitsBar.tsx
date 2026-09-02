@@ -17,7 +17,7 @@ const BENEFITS: { Icon: IconType; title: string; detail: string }[] = [
   },
   {
     Icon: LuPenTool,
-    title: "Contamos con diseño",
+    title: "Diseño gráfico",
     detail: "Creamos la imagen de tu marca.",
   },
   {

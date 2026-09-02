@@ -78,7 +78,8 @@ export default function ClientsStrip() {
               id="clientes-heading"
               className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
             >
-              Algunas de las marcas que confían en Magenta
+              Algunas de las marcas que confían en{" "}
+              <span className={MAGENTA_TEXT_AA}>Magenta</span>
             </h2>
           </div>
           {/* El botón es la única pausa voluntaria y expone su estado. */}

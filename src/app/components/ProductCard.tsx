@@ -15,7 +15,7 @@ export function ProductCard({ product }: ProductCardProps) {
       href={`/productos#${product.id}`}
       className={`group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors hover:border-brand-magenta/40 ${FOCUS_RING}`}
     >
-      <p className="text-[0.8125rem] font-medium leading-snug text-brand-magenta">
+      <p className="text-base font-semibold leading-snug text-brand-magenta">
         {product.question}
       </p>
 

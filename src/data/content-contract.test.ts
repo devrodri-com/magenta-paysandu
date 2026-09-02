@@ -4,7 +4,10 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import ClientsStrip from "@/app/components/ClientsStrip";
+import BenefitsBar from "@/app/components/BenefitsBar";
+import { ProductCard } from "@/app/components/ProductCard";
 import Testimonials from "@/app/components/Testimonials";
+import { ProductCategorySection } from "@/app/productos/ProductCategorySection";
 import TestimoniosPage from "@/app/testimonios/page";
 import {
   canonicalUrl,
@@ -14,6 +17,7 @@ import {
 } from "@/config/seo";
 import { ABOUT_STORY, ABOUT_SUMMARY } from "./about";
 import { CLIENT_LOGOS } from "./clients";
+import { PRODUCT_CATEGORIES } from "./products";
 import {
   MACHINE_IMAGE_NOTE,
   PRINTING_TECHNOLOGIES,
@@ -227,6 +231,7 @@ describe("contrato de clientes", () => {
       id: "pio-pio",
       businessName: "Pio Pio",
       category: "Gastronomía",
+      relationshipNote: "Más de 10 años trabajando juntos",
       text: "Los impresos son de excelente calidad y las entregas siempre llegan en tiempo y forma. Además, se adaptan a las necesidades de cada empresa. Los súper recomendamos.",
       logo: "/images/testimonials/pio-pio.svg",
     });
@@ -248,10 +253,10 @@ describe("contrato de clientes", () => {
       id: "condor-informatica",
       businessName: "Condor Informática",
       category: "Tecnología",
+      relationshipNote: "Más de 10 años trabajando juntos",
       text: "Buen servicio, atención rápida y una muy buena experiencia trabajando con Magenta. Estamos muy conformes con la atención y la forma de trabajar.",
       logo: "/images/clientes/condor-informatica.webp",
     });
-    expect(TESTIMONIALS[2]).not.toHaveProperty("relationshipNote");
   });
 
   it("reutiliza logos existentes sin duplicados ni contenido no autorizado", () => {
@@ -283,16 +288,19 @@ describe("contrato de clientes", () => {
       renderToStaticMarkup(createElement(TestimoniosPage)),
     ];
 
+    expect(TESTIMONIALS.map((testimonial) => testimonial.relationshipNote)).toEqual([
+      relationshipNote,
+      relationshipNote,
+      relationshipNote,
+    ]);
+
     for (const markup of surfaces) {
       for (const testimonial of TESTIMONIALS) {
         expect(markup).toContain(testimonial.businessName);
         expect(markup).toContain(testimonial.text);
       }
 
-      expect(markup).toContain(relationshipNote);
-      expect(markup.indexOf(relationshipNote)).toBeGreaterThan(
-        markup.indexOf("Vitivinicultura"),
-      );
+      expect(markup.match(new RegExp(relationshipNote, "g"))).toHaveLength(3);
       for (const blockquote of markup.matchAll(
         /<blockquote\b[^>]*>[\s\S]*?<\/blockquote>/g,
       )) {
@@ -303,6 +311,40 @@ describe("contrato de clientes", () => {
       expect(markup).toContain("sm:last:col-start-2");
       expect(markup).toContain("lg:grid-cols-3");
     }
+  });
+
+  it("aplica el tamaño aprobado a todas las preguntas de productos", () => {
+    for (const [index, product] of PRODUCT_CATEGORIES.entries()) {
+      const homeMarkup = renderToStaticMarkup(
+        createElement(ProductCard, { product }),
+      );
+      const productsMarkup = renderToStaticMarkup(
+        createElement(ProductCategorySection, {
+          product,
+          position: index + 1,
+          total: PRODUCT_CATEGORIES.length,
+          tinted: index % 2 === 1,
+        }),
+      );
+
+      expect(homeMarkup).toContain(product.question);
+      expect(homeMarkup).toContain(
+        'class="text-base font-semibold leading-snug text-brand-magenta"',
+      );
+      expect(productsMarkup).toContain(product.question);
+      expect(productsMarkup).toContain(
+        'class="mt-4 text-base font-semibold text-brand-magenta sm:text-lg"',
+      );
+    }
+  });
+
+  it("publica el beneficio de diseño con el wording aprobado", () => {
+    const markup = renderToStaticMarkup(createElement(BenefitsBar));
+
+    expect(markup).toContain("Diseño gráfico");
+    expect(markup).toContain("Creamos la imagen de tu marca.");
+    expect(markup).not.toContain("Contamos con diseño");
+    expect(markup).not.toContain("Contamos con diseñador");
   });
 
   it("enlaza ambos CTA con la ficha oficial de Google Maps", () => {
