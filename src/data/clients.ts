@@ -19,7 +19,7 @@ function clientLogo(
 }
 
 export const CLIENT_LOGOS: ClientLogo[] = [
-  clientLogo("salus", "/images/clientes/1.svg", "Salus"),
+  clientLogo("brelysol", "/images/clientes/brelysol.svg", "Brelysol"),
   clientLogo("estudio-lamas", "/images/clientes/2.svg", "Estudio Lamas"),
   clientLogo("bodega-wasiluk", "/images/clientes/3.svg", "Bodega Wasiluk"),
   clientLogo("bimba-bruder", "/images/clientes/4.svg", "Bimba Bruder"),

@@ -165,6 +165,17 @@ describe("contrato de clientes", () => {
       expect(existsSync(publicAssetPath(logo.src))).toBe(true);
     }
 
+    expect(CLIENT_LOGOS[0]).toEqual({
+      id: "brelysol",
+      src: "/images/clientes/brelysol.svg",
+      name: "Brelysol",
+      alt: "Brelysol",
+    });
+    expect(
+      CLIENT_LOGOS.some(({ id, name }) => id === "salus" || name === "Salus"),
+    ).toBe(false);
+    expect(existsSync(publicAssetPath("/images/clientes/1.svg"))).toBe(false);
+
     const removedId = ["le", "o-burg", "ers"].join("");
     expect(CLIENT_LOGOS.some(({ id }) => id === removedId)).toBe(false);
     expect(existsSync(publicAssetPath("/images/clientes/16.svg"))).toBe(false);
