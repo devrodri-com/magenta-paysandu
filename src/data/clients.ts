@@ -29,7 +29,11 @@ export const CLIENT_LOGOS: ClientLogo[] = [
     "Cochería y Previsora San José",
   ),
   clientLogo("optica-claro", "/images/clientes/6.svg", "Óptica Claro"),
-  clientLogo("grupo-bidart", "/images/clientes/7.svg", "Grupo Bidart"),
+  clientLogo(
+    "grupo-bidart",
+    "/images/clientes/grupo-bidart.png",
+    "Grupo Bidart",
+  ),
   clientLogo("punto-com", "/images/clientes/8.svg", "Punto Com"),
   clientLogo(
     "paris-londres",
